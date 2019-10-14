@@ -37,23 +37,39 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
+        $this->mapAppRoutes();
 
+        $this->mapFrontRoutes();
         //
     }
 
     /**
-     * Define the "web" routes for the application.
+     * Define the "app" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapAppRoutes()
+    {
+        Route::prefix(env('APP_PREFIX', 'wp-admin'))
+            ->middleware(['web'])
+            ->namespace($this->namespace.'\Backend')
+            ->group(base_path('routes/app.php'));
+    }
+
+    /**
+     * Define the "front" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapFrontRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->namespace($this->namespace.'\Frontend')
+            ->group(base_path('routes/front.php'));
     }
 
     /**
