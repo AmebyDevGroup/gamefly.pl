@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Auth;
+namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
@@ -38,6 +38,6 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('backend.auth.passwords.email');
+        return view('frontend.auth.passwords.email');
     }
 }

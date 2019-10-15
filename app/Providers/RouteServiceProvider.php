@@ -52,7 +52,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapAppRoutes()
     {
-        Route::prefix(env('APP_PREFIX', 'wp-admin'))
+        Route::name('App::')
+            ->prefix(env('APP_PREFIX', 'wp-admin'))
             ->middleware(['web'])
             ->namespace($this->namespace.'\Backend')
             ->group(base_path('routes/app.php'));
@@ -67,7 +68,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapFrontRoutes()
     {
-        Route::middleware('web')
+        Route::name('Front::')
+            ->middleware('front')
             ->namespace($this->namespace.'\Frontend')
             ->group(base_path('routes/front.php'));
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Auth;
+namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
@@ -51,6 +51,6 @@ class VerificationController extends Controller
     {
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
-            : view('backend.auth.verify');
+            : view('frontend.auth.verify');
     }
 }

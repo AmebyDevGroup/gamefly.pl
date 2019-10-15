@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\InitFrontend;
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +24,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router, Kernel $kernel)
     {
-        //
+        $router->middlewareGroup('front', $kernel->getMiddlewareGroups()['web']);
+        $router->pushMiddlewareToGroup('front', InitFrontend::class);
     }
 }
