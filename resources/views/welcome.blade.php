@@ -99,7 +99,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    GameFly.pl
+                    <img src="{{ asset('img/logo.png') }}" width=50% >
                 </div>
 
                 <div class="links">
