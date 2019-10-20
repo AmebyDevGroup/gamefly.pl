@@ -24,6 +24,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tinyscrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
@@ -35,14 +36,12 @@
 <body>
 
 <div class="outer">
-
-    <div class="navigation">
-        <a href="#">Menu</a>
-    </div>
     <div class="sidebar">
         <!--LOGO-->
         <div class="logo">
-            <a href="#"><img src="img/logogf.png" alt="gamefly.pl"></a>
+            <a href="{{url('/')}}">
+                <img src="img/logogf.png" alt="gamefly.pl">
+            </a>
         </div>
         <!--szukajka-->
         <div class="sidebar-search">
@@ -50,28 +49,25 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Szukaj gry">
                     <span class="input-group-btn">
-								 <button type="submit"><i class="fa fa-search"></i></button>
-							</span>
+                         <button type="submit"><i class="fa fa-search"></i></button>
+                    </span>
                 </div>
             </form>
         </div>
-        <!-- nawigacja -->
-        <div class="menu">
-            <li class="item" id="messages">
-                <a href="#" class="btn"></i>Odkrywaj</a>
-            </li>
-
-            <li class="item" id="settings">
-                <a href="#settings" class="btn"></i>Kategorie</a>
-                <div class="smenu">
-                    <a href="">Akcji</a>
-                    <a href="">Wyścigi</a>
+        <div id="sidebar-menu">
+            <div class="scrollbar">
+                <div class="track">
+                    <div class="thumb">
+                        <div class="end"></div>
+                    </div>
                 </div>
-            </li>
-        </div>
-
+            </div>
+            <!-- nawigacja -->
+        @include('frontend.menu')
         <!-- sekcja logowania -->
-        <div class="login">
+            <div class="login">
+                ZALOGUJ
+            </div>
         </div>
     </div>
 
@@ -79,76 +75,31 @@
     <!-- sekcja główna -->
 
     <div class="main">
+    @yield('content')
 
-        <div id="carousel-example-generic" class="carousel slide carousel-fade">
-            <div class="carousel-inner">
-                <div class="item active">
-                </div>
-
-                <!-- TOP -->
-                <div class="service">
-                    <h3 class='strikearound'>TOP</h3>
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                            <!-- Service item -->
-                            <div class="service-item animated">
-                                <i class="icon-camera skyblue"></i>
-                                <!-- Service item heading -->
-                                <h4><a href="#">Neque perspiciatis</a></h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia mollit anim id ests.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                            <div class="service-item animated">
-                                <i class="icon-envelope nblue"></i>
-                                <h4><a href="#">Finibus perspiciatis</a></h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium totam remo.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                            <div class="service-item animated">
-                                <i class="icon-download blue"></i>
-                                <h4><a href="#">Cicero perspiciatis</a></h4>
-                                <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself pain.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6">
-                            <div class="service-item animated">
-                                <i class="icon-gamepad green"></i>
-                                <h4><a href="#">Malorum perspiciatis</a></h4>
-                                <p>At vero eos et accusamus et iusto odio dignissimos qui blanditiis praesentium itate none.</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Stopka -->
+        <footer>
+            <div class="row">
+                <div class="col-md-12">
+                    <hr/>
+                    <br/>
+                    <p class="text-center">Copyright 2019</a></p>
+                    <br/>
                 </div>
             </div>
-        </div>
-        <!-- Koniec topu -->
-        <!-- NEWS -->
-    @yield('content')
-    <!-- Koniec NEEWS -->
-
-            <!-- Stopka -->
-            <footer>
-                <div class="row">
-                    <div class="col-md-12">
-                        <hr />
-                        <br />
-                        <p class="text-center">Copyright 2019</a></p>
-                        <br />
-                    </div>
-                </div>
-            </footer>
-        </div>
+        </footer>
     </div>
+</div>
     <!-- Javascript files -->
     <!-- jQuery -->
-    <script src="{{ asset('js/jquery.js') }}"></script>
+{{--    <script src="{{ asset('js/jquery.js') }}"></script>--}}
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.arbitrary-anchor.js') }}"></script>
     <script src="{{ asset('js/waypoints.min.js') }}"></script>
     <script src="{{ asset('js/respond.min.js') }}"></script>
     <script src="{{ asset('js/html5shiv.js') }}"></script>
-    <script src={{ asset('js/custom.js') }}""></script>
+<script src="{{ asset('js/jquery.tinyscrollbar.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
