@@ -14,6 +14,6 @@
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
 });
 Route::get('{category}', 'HomeController@getCategory');
