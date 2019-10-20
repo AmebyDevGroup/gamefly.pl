@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Frontend\FrontUser;
+use App\FrontUser;
 use Closure;
 use Config;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Http\Request;
-use SunAppModules\Cms\Http\Middleware\EnsureEmailIsVerified;
 
 class InitFrontend
 {
@@ -26,7 +26,7 @@ class InitFrontend
             ["provider" => "front_users", "table" => "front_password_resets", "expire" => 10080]);
         Config::set('auth.defaults.passwords', 'front_users');
         auth()->setDefaultDriver('front');
-        $app['router']->aliasMiddleware('auth', \SunAppModules\Cms\Http\Middleware\Authenticate::class);
+        $app['router']->aliasMiddleware('auth', FrontAuthenticate::class);
         $app['router']->aliasMiddleware('verified', EnsureEmailIsVerified::class);
         return $next($request);
     }
