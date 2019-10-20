@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Frontend\FrontUser;
+use App\FrontUser;
 use Closure;
 use Config;
 use Illuminate\Http\Request;

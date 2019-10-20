@@ -1,16 +1,16 @@
 <?php
 
-use App\Models\Backend\User;
-use Illuminate\Database\Migrations\Migration;
+use App\User;
+use Illuminate\Database\Seeder;
 
-class AddAdminAccounts extends Migration
+class AdminSeeder extends Seeder
 {
     /**
-     * Run the migrations.
+     * Run the database seeds.
      *
      * @return void
      */
-    public function up()
+    public function run()
     {
         $kw = User::firstOrCreate([
             'name' => 'Krzysztof Wieczorek',
@@ -23,15 +23,5 @@ class AddAdminAccounts extends Migration
             'email' => 'werwa999@gmail.com',
             'password' => '$2y$10$/7KFB4vR8Kq7baRWeIT3eOQRbj8dGRcEDCfh.whocYGn.CS35iBhm'
         ]);
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
     }
 }
