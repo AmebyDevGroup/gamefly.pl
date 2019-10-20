@@ -16,4 +16,14 @@ class GamesCategory extends Model
         'slug',
         'description',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function games()
+    {
+        return $this->hasMany(Game::class, 'category_id');
+    }
 }

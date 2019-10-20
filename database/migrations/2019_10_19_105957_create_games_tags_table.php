@@ -20,6 +20,12 @@ class CreateGamesTagsTable extends Migration
             $table->text('description');
             $table->timestamps();
         });
+
+        Schema::create('game_tag', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('game_id');
+            $table->bigInteger('tag_id');
+        });
     }
 
     /**

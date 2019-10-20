@@ -16,4 +16,9 @@ class GamesTag extends Model
         'slug',
         'description',
     ];
+
+    public function games()
+    {
+        $this->belongsToMany(Game::class, 'game_tag', 'tag_id', 'game_id');
+    }
 }

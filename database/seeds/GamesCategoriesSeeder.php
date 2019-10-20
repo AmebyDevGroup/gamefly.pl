@@ -14,7 +14,6 @@ class GamesCategoriesSeeder extends Seeder
     {
         $categories = [
             'Akcja',
-            'FPP',
             'Logiczne',
             'MMO',
             'Niezależne',
@@ -25,8 +24,7 @@ class GamesCategoriesSeeder extends Seeder
             'Sportowe',
             'Strategie',
             'Strzelanki',
-            'Symulacje',
-            'Symulatory lotu',
+            'Symulatory',
             'Wyścigi',
             'Zręcznościowe'
         ];
