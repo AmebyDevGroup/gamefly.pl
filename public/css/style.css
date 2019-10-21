@@ -401,3 +401,7 @@ h3.strikearound:after{
     margin-top: 20px;
     font-size: 15px;
 }
+@font-face {
+    font-family:'Quantum';
+    src: url('/fonts/Quantum.ttf')
+}
