@@ -65,8 +65,9 @@
             <!-- nawigacja -->
         @include('frontend.menu')
         <!-- sekcja logowania -->
-            <div class="login">
-                ZALOGUJ
+            <li class="item" id="zaloguj">
+                <a href="{{ route('Front::login') }}" class="btn"></i>Zaloguj</a>
+            </li>
             </div>
         </div>
     </div>
@@ -83,7 +84,7 @@
                 <div class="col-md-12">
                     <hr/>
                     <br/>
-                    <p class="text-center">Copyright 2019</a></p>
+                    <p class="text-center">Copyright 2019</p>
                     <br/>
                 </div>
             </div>

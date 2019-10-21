@@ -4,7 +4,7 @@
 
 <div class="menu">
     <li class="item" id="messages">
-        <a href="#" class="btn"></i>Odkrywaj</a>
+        <a href="{{url('/')}}" class="btn"></i>Odkrywaj</a>
     </li>
 
     <li class="item" id="settings">
