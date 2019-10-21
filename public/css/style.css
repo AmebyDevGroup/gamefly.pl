@@ -91,6 +91,7 @@ hr{
     margin: 20px 15px;
     border: 1px dashed #333;
     background: #000000;
+
 }
 
 .sidebar .sidebar-search > form > .input-group > input{
@@ -110,6 +111,7 @@ hr{
     color:#888;
     border: 0;
     font-family: 'Quantum';
+    font-size:18px;
 
 }
 
@@ -173,6 +175,7 @@ h3.strikearound {
     overflow: hidden;
     text-align: center;
     font-family: 'Quantum', sans-serif;
+    color:#000000;
 }
 h3.strikearound:before {
     position: absolute;
@@ -308,6 +311,7 @@ h3.strikearound:after{
     background: #ff0000;
     color: white;
     position: relative;
+    font-size:18px;
 }
 
 .btn::before {
@@ -407,3 +411,4 @@ h3.strikearound:after{
     font-family:'Quantum';
     src: url('/fonts/Quantum.ttf')
 }
+
