@@ -400,6 +400,8 @@ h3.strikearound:after{
     color: white;
     margin-top: 20px;
     font-size: 15px;
+    height: 30px;
+    width:280px;
 }
 @font-face {
     font-family:'Quantum';
