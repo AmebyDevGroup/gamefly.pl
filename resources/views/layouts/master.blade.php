@@ -58,9 +58,22 @@
             @include('frontend.menu')
         </div>
         <!-- sekcja logowania -->
-        <li class="zaloguj">
-            <a href="{{ route('Front::login') }}" class="btn"></i>Zaloguj</a>
-        </li>
+        @auth
+            <li class="zaloguj">
+                <a href="{{ route('Front::logout') }}" class="btn" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">Wyloguj</a>
+            </li>
+
+            <form id="logout-form" action="{{ route('Front::logout') }}" method="POST"
+                  style="display: none;">
+                @csrf
+            </form>
+        @else
+            <li class="zaloguj">
+                <a href="{{ route('Front::login') }}" class="btn">Zaloguj</a>
+            </li>
+        @endauth
+
     </div>
 
 
@@ -70,14 +83,7 @@
     @yield('content')
     <!-- Stopka -->
         <footer>
-            <div class="row">
-                <div class="col-md-12">
-                    <hr/>
-                    <br/>
-                    <p class="text-center">© <?php echo date("Y"); ?> Copyright.</p>
-                    <br/>
-                </div>
-            </div>
+            <p>© <?php echo date("Y"); ?> Copyright. #KW#JW</p>
         </footer>
     </div>
 </div>

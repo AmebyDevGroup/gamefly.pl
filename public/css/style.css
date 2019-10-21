@@ -153,6 +153,7 @@ hr{
     overflow-y: auto;
     overflow-x: hidden;
     min-height: calc(100vh - 60px);
+    padding-bottom: 60px;
 }
 
 .home .service:first-of-type {
@@ -285,7 +286,7 @@ h3.strikearound:after{
 .menu .smenu {
     font-size: 14px;
     max-height: 0;
-    height: calc(100vh - 450px);
+    height: calc(100vh - 425px);
     overflow-y: auto;
 
 }
@@ -312,6 +313,7 @@ h3.strikearound:after{
     color: white;
     position: relative;
     font-size:18px;
+    border-radius: 0px;
 }
 
 .btn::before {
@@ -359,69 +361,61 @@ h3.strikearound:after{
 }
 
 .item:target .smenu {
-    max-height: calc(100vh - 450px);
+    max-height: calc(100vh - 425px);
 }
 
 .card
 {
-    width:600px;
-    margin-top: 10%;
-    margin-left: 48%;
-    position: relative;
+    max-width: 600px;
+    width: 100%;
     background: #FFFFFF;
     padding: 70px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    /*border-top-left-radius: 10px;*/
+    /*border-top-right-radius: 10px;*/
+    /*border-bottom-left-radius: 10px;*/
+    /*border-bottom-right-radius: 10px;*/
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    border-radius: 4px;
 }
+
+.auth-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 790px;
+}
+
 .zaloguj {
     font-family: 'Quantum';
     width: 100%;
     padding:  0px;
     position: absolute;
-    bottom: 5%;
+    bottom: 20px;
     left: 0px;
     overflow: hidden;
+    font-size: 0px;
 }
-.login:hover {
+
+.auth-button:hover {
     background: #ff6e40;
 }
-.login {
+
+.auth-button {
     border: none;
     font-family: 'Quantum';
-    border-radius: 8px;
+    border-radius: 4px;
     display: block;
     background: #ff0000;
     color: white;
-    width:490px;
-    height: 40px;
+    width: 100%;
+    padding: 5px 0px 10px;
     font-size: 20px;
-    margin-left: -15px;
-}
-.psw:hover {
-    background: #ff6e40;
 }
 .forgot {
     position: fixed;
     display: block;
     margin-top: 10px;
-    margin-left: -10px;
-}
-.psw
-{
-    border: none;
-    border-radius: 8px;
-    background: #ff0000;
-    color: white;
-    margin-top: 20px;
-    font-size: 22px;
-    height: 40px;
-    width:490px;
-    margin-left: -15px;
-    font-family: 'Quantum';
 }
 @font-face {
     font-family:'Quantum';
@@ -429,11 +423,19 @@ h3.strikearound:after{
 }
 
 footer {
-    position:fixed;
-    left:100px;
+    position: fixed;
+    left: 240px;
     bottom:0px;
-    width:100%;
+    width: calc(100% - 240px);
+    text-align: center;
+    background-color: #eeeeee;
+    border-top: 1px solid #ccc;
 }
+
+footer p {
+    padding: 20px 0;
+}
+
 #ll
 {
     display: block;
