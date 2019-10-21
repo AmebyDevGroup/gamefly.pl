@@ -377,7 +377,6 @@ h3.strikearound:after{
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 }
-
 .zaloguj {
     font-family: 'Quantum';
     width: 100%;
@@ -386,6 +385,9 @@ h3.strikearound:after{
     bottom: 5%;
     left: 0px;
     overflow: hidden;
+}
+.login:hover {
+    background: #ff6e40;
 }
 .login {
     border: none;
@@ -398,6 +400,9 @@ h3.strikearound:after{
     height: 40px;
     font-size: 20px;
     margin-left: -70px;
+}
+.psw:hover {
+    background: #ff6e40;
 }
 .forgot {
     display: block;
