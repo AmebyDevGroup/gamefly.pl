@@ -74,7 +74,7 @@
                 <div class="col-md-12">
                     <hr/>
                     <br/>
-                    <p class="text-center">Copyright 2019</p>
+                    <p class="text-center">© <?php echo date("Y"); ?> Copyright.</p>
                     <br/>
                 </div>
             </div>
