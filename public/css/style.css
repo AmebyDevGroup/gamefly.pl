@@ -415,7 +415,7 @@ h3.strikearound:after{
     height: 40px;
     width:600px;
     margin-left: -70px;
-    font-family: Quantum;
+    font-family: 'Quantum';
 }
 @font-face {
     font-family:'Quantum';
