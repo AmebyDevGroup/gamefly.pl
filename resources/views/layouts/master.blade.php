@@ -40,7 +40,7 @@
         <!--LOGO-->
         <div class="logo">
             <a href="{{url('/')}}">
-                <img src="img/logogf.png" alt="gamefly.pl">
+                <img src={{ asset('img/logogf.png') }} alt="gamefly.pl">
             </a>
         </div>
         <!--szukajka-->
@@ -59,7 +59,7 @@
             @include('frontend.menu')
         </div>
         <!-- sekcja logowania -->
-        <li class="item" id="zaloguj">
+        <li class="zaloguj">
             <a href="{{ route('Front::login') }}" class="btn"></i>Zaloguj</a>
         </li>
     </div>
