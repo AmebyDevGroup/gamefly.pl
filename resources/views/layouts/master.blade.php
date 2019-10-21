@@ -55,21 +55,13 @@
             </form>
         </div>
         <div id="sidebar-menu">
-            <div class="scrollbar">
-                <div class="track">
-                    <div class="thumb">
-                        <div class="end"></div>
-                    </div>
-                </div>
-            </div>
             <!-- nawigacja -->
-        @include('frontend.menu')
-        <!-- sekcja logowania -->
-            <li class="item" id="zaloguj">
-                <a href="{{ route('Front::login') }}" class="btn"></i>Zaloguj</a>
-            </li>
-            </div>
+            @include('frontend.menu')
         </div>
+        <!-- sekcja logowania -->
+        <li class="item" id="zaloguj">
+            <a href="{{ route('Front::login') }}" class="btn"></i>Zaloguj</a>
+        </li>
     </div>
 
 
