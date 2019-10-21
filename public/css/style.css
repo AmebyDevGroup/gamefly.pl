@@ -396,18 +396,19 @@ h3.strikearound:after{
     display: block;
     background: #ff0000;
     color: white;
-    width:600px;
+    width:490px;
     height: 40px;
     font-size: 20px;
-    margin-left: -70px;
+    margin-left: -15px;
 }
 .psw:hover {
     background: #ff6e40;
 }
 .forgot {
+    position: fixed;
     display: block;
-    margin-left: 175px;
     margin-top: 10px;
+    margin-left: -10px;
 }
 .psw
 {
@@ -418,8 +419,8 @@ h3.strikearound:after{
     margin-top: 20px;
     font-size: 22px;
     height: 40px;
-    width:600px;
-    margin-left: -70px;
+    width:490px;
+    margin-left: -15px;
     font-family: 'Quantum';
 }
 @font-face {
@@ -452,4 +453,7 @@ footer {
     -moz-animation-duration:1s;
     animation-duration:1s;
 }
-
+input
+{
+    text-align: center;
+}

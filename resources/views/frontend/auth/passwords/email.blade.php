@@ -18,11 +18,7 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="email"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Adres E-Mail') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email"
+                                    <input id="email" type="email" placeholder="Wpisz adres e-mail"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
                                            value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -31,7 +27,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>
                             </div>
 
                             <div class="form-group row mb-0">
@@ -39,6 +34,9 @@
                                     <button type="submit" class="psw">
                                         {{ __('Wyślij link do zresetowania hasła') }}
                                     </button>
+                                    <br/>
+                                    <br/>
+                                    <a class="forgot" href="{{ URL::previous() }}">Cofnij</a>
                                 </div>
                             </div>
                         </form>
