@@ -91,7 +91,6 @@ hr{
     margin: 20px 15px;
     border: 1px dashed #333;
     background: #000000;
-
 }
 
 .sidebar .sidebar-search > form > .input-group > input{
@@ -153,6 +152,7 @@ hr{
     background: #f5f5f5;
     overflow-y: auto;
     overflow-x: hidden;
+    min-height: calc(100vh - 60px);
 }
 
 .home .service:first-of-type {
@@ -409,6 +409,11 @@ h3.strikearound:after{
 }
 @font-face {
     font-family:'Quantum';
-    src: url('/fonts/Quantum.ttf')
+    src: url('/fonts/Quantum.ttf');
 }
 
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
