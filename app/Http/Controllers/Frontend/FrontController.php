@@ -7,10 +7,11 @@ use App\Game;
 use App\GamesCategory;
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class FrontController extends Controller
 {
     public function getCategory(GamesCategory $category)
     {
+        $category->load('games');
 //        $category->games()->create([
 //            'ordering' => 1,
 //            'code' => 'fifa_19',
@@ -22,6 +23,7 @@ class HomeController extends Controller
 //            'preorder' => 0,
 //            'sale' => 0
 //        ]);
+        return view('frontend.category', ['category' => $category]);
         dd('aaa', $category, $category->games);
     }
 }
