@@ -413,7 +413,8 @@ h3.strikearound:after{
 }
 
 footer {
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
+    position:fixed;
+    left:100px;
+    bottom:0px;
+    width:100%;
 }

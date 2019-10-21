@@ -67,7 +67,6 @@
 
     <div class="main">
     @yield('content')
-
     <!-- Stopka -->
         <footer>
             <div class="row">
