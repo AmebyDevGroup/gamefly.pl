@@ -22,11 +22,9 @@
     <!-- Styles -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fontawesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/tinyscrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
@@ -85,14 +83,12 @@
 </div>
     <!-- Javascript files -->
     <!-- jQuery -->
-{{--    <script src="{{ asset('js/jquery.js') }}"></script>--}}
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.arbitrary-anchor.js') }}"></script>
     <script src="{{ asset('js/waypoints.min.js') }}"></script>
     <script src="{{ asset('js/respond.min.js') }}"></script>
     <script src="{{ asset('js/html5shiv.js') }}"></script>
-<script src="{{ asset('js/jquery.tinyscrollbar.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
