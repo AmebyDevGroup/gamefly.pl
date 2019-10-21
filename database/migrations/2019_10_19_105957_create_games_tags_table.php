@@ -36,6 +36,5 @@ class CreateGamesTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('games_tags');
-        Schema::dropIfExists('game_tag');
     }
 }
