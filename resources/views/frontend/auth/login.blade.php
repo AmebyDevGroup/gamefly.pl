@@ -6,10 +6,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+                    <img id="ll" src={{ asset('img/logo.png') }} alt="GameFly">
                     <div class="card-body">
                         <form method="POST" action="{{ route('Front::login') }}">
                             @csrf
-
                             <div class="form-group row">
                                 <label for="email"
                                        class="col-md-4 col-form-label text-md-right">{{ __('Adres E-Mail') }}</label>
