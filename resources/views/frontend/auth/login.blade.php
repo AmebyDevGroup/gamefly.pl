@@ -65,7 +65,7 @@
                                         </br>
                                     @if (Route::has('Front::password.request'))
                                         <a class="forgot" href="{{ route('Front::password.request') }}">
-                                            {{ __('Przypomnij hasło') }}
+                                            {{ __('Przypomnij') }}
                                         </a>
                                     @endif
                                 </div>
