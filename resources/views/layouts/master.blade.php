@@ -90,7 +90,7 @@
     @yield('content')
     <!-- Stopka -->
         <footer>
-            <p>© <?php echo date("Y"); ?> Copyright. #KW#JW</p>
+            <p>© <?php echo date("Y"); ?> Copyright.<a href="https://github.com/KrzychuW">#KW</a><a href="https://github.com/WerVa">#JW</a></p>
         </footer>
     </div>
 </div>

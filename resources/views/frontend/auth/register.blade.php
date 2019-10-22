@@ -4,14 +4,12 @@
     <h3 class='strikearound'>Utwórz konto</h3>
     <div class="auth-box">
         <div class="card">
-            <div class="card-header">{{ __('Register') }}</div>
-
-            <div class="card-body">
+            <div class="card-body-reg">
                 <form method="POST" action="{{ route('Front::register') }}">
                     @csrf
 
                     <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Imię:') }}</label>
 
                         <div class="col-md-6">
                             <input id="name" type="text"
@@ -28,7 +26,7 @@
 
                     <div class="form-group row">
                         <label for="email"
-                               class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                               class="col-md-4 col-form-label text-md-right">{{ __('Adres E-Mail:') }}</label>
 
                         <div class="col-md-6">
                             <input id="email" type="email"
@@ -45,7 +43,7 @@
 
                     <div class="form-group row">
                         <label for="password"
-                               class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                               class="col-md-4 col-form-label text-md-right">{{ __('Hasło:') }}</label>
 
                         <div class="col-md-6">
                             <input id="password" type="password"
@@ -62,7 +60,7 @@
 
                     <div class="form-group row">
                         <label for="password-confirm"
-                               class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                               class="col-md-4 col-form-label text-md-right">{{ __('Potwierdź Hasło:') }}</label>
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" class="form-control"
@@ -72,9 +70,10 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Register') }}
+                            <button type="submit" class="zarejestruj">
+                                {{ __('Zarejestruj') }}
                             </button>
+                            <a class="forgot" href="{{ URL::previous() }}">Cofnij</a>
                         </div>
                     </div>
                 </form>
