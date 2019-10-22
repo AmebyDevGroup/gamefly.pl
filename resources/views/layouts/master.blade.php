@@ -35,6 +35,13 @@
 <body>
 
 <div class="outer">
+    @auth
+        @if(!auth()->user()->hasVerifiedEmail())
+            <div class="not-verified">
+                Aby w pełni korzystać z serwisu potwierdź swój adres email!
+            </div>
+        @endif
+    @endauth
     <div class="sidebar">
         <!--LOGO-->
         <div class="logo">
