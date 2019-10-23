@@ -23,4 +23,19 @@ class Game extends Model
         'preorder',
         'sale',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(GamesCategory::class);
+    }
+
+    public function getUrl()
+    {
+        return route('Front::game', [$this->category, $this]);
+    }
 }

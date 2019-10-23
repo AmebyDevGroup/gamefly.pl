@@ -46,6 +46,10 @@ class FrontController extends Controller
 //        ]);
         $category->load('games');
         return view('frontend.category', ['category' => $category]);
-        dd('aaa', $category, $category->games);
+    }
+
+    public function getGame(GamesCategory $category, Game $game)
+    {
+        return view('frontend.game', ['category' => $category, 'game' => $game]);
     }
 }

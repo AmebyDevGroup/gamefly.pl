@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('frontend.home');
 });
 Route::get('{category}', 'FrontController@getCategory')->name('category');
+Route::get('{category}/{game}', 'FrontController@getGame')->name('game');

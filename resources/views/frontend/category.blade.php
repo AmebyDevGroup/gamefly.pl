@@ -10,7 +10,7 @@
                     <div class="service-item animated">
                         <i class="icon-camera skyblue"></i>
                         <!-- Service item heading -->
-                        <h4><a href="#">{{$game->name}}</a></h4>
+                        <h4><a href="{{$game->getUrl()}}">{{$game->name}}</a></h4>
                         <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia mollit anim id
                             ests.</p>
                     </div>
