@@ -1,0 +1,61 @@
+body {
+    background-color: #333;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    color: hsla(0, 0%, 100%, .5);
+    background: #343a40 !important;
+}
+
+.navbar-brand {
+    padding-left: 70px;
+}
+
+.logo-navbar {
+    width: 63px;
+    position: absolute;
+    top: 5px;
+    left: 1rem;
+}
+
+/* HOME PAGE*/
+.big-logo {
+    max-width: 600px;
+    width: 100%;
+}
+
+.home-page {
+    color: #fff;
+}
+
+
+/* PAGINACJA*/
+
+.page-link {
+    border: 1px solid #9a9da0;
+    background-color: #343a40;
+    color: #fff;
+}
+
+.page-item.active .page-link {
+    border-color: #9a9da0;
+    background-color: #ba1b12;
+}
+
+.page-item.disabled .page-link {
+    border-color: #9a9da0;
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.page-link:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #ba1b12;
+    border-color: #9a9da0;
+}

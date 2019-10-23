@@ -16,5 +16,5 @@ Auth::routes(['register' => false]);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
-
+    Route::resource('games', 'GameController');
 });
