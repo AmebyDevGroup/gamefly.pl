@@ -55,11 +55,11 @@
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <!-- Service item -->
                     <div class="service-item animated">
-                        <i class="icon-camera skyblue"></i>
+                        <img class="okladka" src={{ asset('img/fifa20.jpg') }} alt="Fifa20">
                         <!-- Service item heading -->
-                        <h4><a href="#">Neque perspiciatis</a></h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia mollit anim id
-                            ests.</p>
+                        <br/>
+                        <h4><a href="#">Fifa 20</a></h4>
+                        <p>Kolejna odsłona serii gier piłkarskich od studia EA Sports. W FIFA 20 kierujemy wiernie odwzorowanymi prawdziwymi drużynami oraz zawodnikami, grając przeciwko sztucznej inteligencji lub innym graczom. Główną nowością jest tryb VOLTA Football..</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-6">
