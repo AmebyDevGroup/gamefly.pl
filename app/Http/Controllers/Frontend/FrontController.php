@@ -6,6 +6,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Game;
 use App\GamesCategory;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
+use PDOException;
+
 
 class FrontController extends Controller
 {
@@ -45,11 +48,14 @@ class FrontController extends Controller
 //            'sale' => 0
 //        ]);
         $category->load('games');
+        View::share('currentCategory', $category);
         return view('frontend.category', ['category' => $category]);
     }
 
     public function getGame(GamesCategory $category, Game $game)
     {
+        View::share('currentCategory', $category);
+        View::share('currentGame', $game);
         return view('frontend.game', ['category' => $category, 'game' => $game]);
     }
 }

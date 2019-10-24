@@ -361,14 +361,15 @@ h3.strikearound:after{
     opacity: 0;
 }
 
+.smenu a.active::before,
 .smenu a:hover::before {
     opacity: 1;
 }
 
+.item.toggled .smenu,
 .item:target .smenu {
     max-height: calc(100vh - 425px);
 }
-
 .card
 {
     max-width: 600px;

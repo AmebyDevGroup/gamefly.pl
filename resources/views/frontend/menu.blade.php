@@ -1,5 +1,7 @@
 @php
-    use App\GamesCategory;$categories = GamesCategory::all();
+    use App\GamesCategory;
+    $categories = GamesCategory::all();
+    $cat = $currentCategory->id??false;
 @endphp
 
 <div class="menu">
@@ -7,11 +9,12 @@
         <a href="{{url('/')}}" class="btn"></i>Odkrywaj</a>
     </li>
 
-    <li class="item" id="settings">
+    <li class="item @if($cat) toggled @endif " id="settings">
         <a href="#settings" class="btn"></i>Kategorie</a>
         <div class="smenu">
             @foreach($categories as $category)
-                <a href="{{route('Front::category', [$category->slug])}}">{{$category->name}}</a>
+                <a @if($cat == $category->id) class="active"
+                   @endif href="{{route('Front::category', [$category->slug])}}">{{$category->name}}</a>
             @endforeach
         </div>
     </li>
