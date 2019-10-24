@@ -16,12 +16,15 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,600' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,600' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet'
+          type='text/css'>
 
     <!-- Styles -->
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet'
+          type='text/css'>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
@@ -29,79 +32,41 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
-
 </head>
 
 <body>
-
 <div class="outer">
     @auth
         @if(!auth()->user()->hasVerifiedEmail())
             <div class="not-verified">
                 Aby w pełni korzystać z serwisu potwierdź swój adres email!
             </div>
-        @endif
-    @endauth
+    @endif
+@endauth
+<!-- Menu boczne -->
     <div class="sidebar">
-        <!--LOGO-->
-        <div class="logo">
-            <a href="{{url('/')}}">
-                <img src={{ asset('img/logogf.png') }} alt="gamefly.pl">
-            </a>
-        </div>
-        <!--szukajka-->
-        <div class="sidebar-search">
-            <form>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Szukaj gry">
-                    <span class="input-group-btn">
-                         <button type="submit"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </form>
-        </div>
-        <div id="sidebar-menu">
-            <!-- nawigacja -->
-            @include('frontend.menu')
-        </div>
-        <!-- sekcja logowania -->
-        @auth
-            <li class="zaloguj">
-                <a href="{{ route('Front::logout') }}" class="btn" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">Wyloguj</a>
-            </li>
-
-            <form id="logout-form" action="{{ route('Front::logout') }}" method="POST"
-                  style="display: none;">
-                @csrf
-            </form>
-        @else
-            <li class="zaloguj">
-                <a href="{{ route('Front::login') }}" class="btn">Zaloguj</a>
-            </li>
-        @endauth
-
+        @include('frontend.sidebar')
     </div>
-
 
     <!-- sekcja główna -->
-
     <div class="main">
-    @yield('content')
-    <!-- Stopka -->
-        <footer>
-            <p>© <?php echo date("Y"); ?> Copyright.<a href="https://github.com/KrzychuW">#KW</a><a href="https://github.com/WerVa">#JW</a></p>
-        </footer>
+        @yield('content')
     </div>
+
+    <!-- Stopka -->
+    <footer>
+        <p>© <?php echo date("Y"); ?> Copyright.<a href="https://github.com/KrzychuW">#KW</a><a
+                href="https://github.com/WerVa">#JW</a></p>
+    </footer>
 </div>
-    <!-- Javascript files -->
-    <!-- jQuery -->
+<!-- Javascript files -->
+<!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.arbitrary-anchor.js') }}"></script>
-    <script src="{{ asset('js/waypoints.min.js') }}"></script>
-    <script src="{{ asset('js/respond.min.js') }}"></script>
-    <script src="{{ asset('js/html5shiv.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.arbitrary-anchor.js') }}"></script>
+<script src="{{ asset('js/waypoints.min.js') }}"></script>
+<script src="{{ asset('js/respond.min.js') }}"></script>
+<script src="{{ asset('js/html5shiv.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
