@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Game;
-use App\Http\Controllers\Controller;
+use App\GamesCategory;
 use Exception;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 
-class GameController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::paginate(10);
-        return view('backend.games.index', ['games' => $games]);
+        $categories = GamesCategory::paginate(10);
+        return view('backend.categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -30,7 +30,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('backend.games.create');
+        return view('backend.categories.create');
     }
 
     /**
@@ -42,8 +42,9 @@ class GameController extends Controller
     public function store(Request $request)
     {
         try {
-            Game::create(array_merge($request->all(), ['slug' => Str::slug($request->name)]));
-            return redirect()->route('App::games.index')->withMessage('success', 'Dodano pomyślnie gre');
+            GamesCategory::create(array_merge($request->all(), ['slug' => Str::slug($request->name)]));
+            return redirect()->route('App::categories.index')->withMessage('success',
+                'Dodano pomyślnie dodano kategorie');
         } catch (Exception $e) {
             $message = $e->getMessage();
             if ($e->getPrevious()) {
@@ -61,7 +62,7 @@ class GameController extends Controller
      */
     public function show($id)
     {
-        //
+//        return view('backend.categories.show');
     }
 
     /**
@@ -70,9 +71,9 @@ class GameController extends Controller
      * @param int $id
      * @return Response
      */
-    public function edit(Game $game)
+    public function edit(GamesCategory $category)
     {
-        return view('backend.games.edit', ['game' => $game]);
+        return view('backend.categories.edit', ['category' => $category]);
     }
 
     /**
@@ -82,12 +83,12 @@ class GameController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, Game $game)
+    public function update(Request $request, GamesCategory $category)
     {
         try {
-            $game->update(array_merge($request->all(), ['slug' => Str::slug($request->name)]));
+            $category->update(array_merge($request->all(), ['slug' => Str::slug($request->name)]));
             return redirect()->route('App::categories.index')->withMessage('success',
-                'Pomyślnie edytowano kategorie ' . $game->name);
+                'Pomyślnie edytowano kategorie ' . $category->name);
         } catch (Exception $e) {
             $message = $e->getMessage();
             if ($e->getPrevious()) {
@@ -103,9 +104,9 @@ class GameController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy(Game $game)
+    public function destroy(GamesCategory $category)
     {
-        $game->delete();
+        $category->delete();
         return redirect()->back()->withMessage('success', 'Element usunięty');
     }
 }

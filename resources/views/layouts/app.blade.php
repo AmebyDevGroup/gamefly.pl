@@ -17,13 +17,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <script src="https://kit.fontawesome.com/b91db4d51d.js" crossorigin="anonymous"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/backend.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ route('App::home') }}">
                 <img class="logo-navbar" src="{{asset('img/logogf.png')}}"> {{ config('app.name', 'GameFly') }} - Admin
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -36,7 +37,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('App::home')}}">Strona główna</a>
+                        <a class="nav-link" href="{{route('App::home')}}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('App::categories.index')}}">Kategorie</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('App::games.index')}}">Gry</a>
