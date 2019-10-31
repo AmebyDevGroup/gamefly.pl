@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Game;
+use App\GamesCategory;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::paginate(10);
+        $games = Game::with('category')->paginate(10);
         return view('backend.games.index', ['games' => $games]);
     }
 
@@ -30,7 +31,8 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('backend.games.create');
+        $categories = GamesCategory::orderBy('name')->get();
+        return view('backend.games.create', ['categories' => $categories]);
     }
 
     /**
@@ -42,7 +44,7 @@ class GameController extends Controller
     public function store(Request $request)
     {
         try {
-            Game::create(array_merge($request->all(), ['slug' => Str::slug($request->name)]));
+            Game::create(array_merge($request->all(), ['slug' => Str::slug($request->name), 'ordering' => 0]));
             return redirect()->route('App::games.index')->withMessage('success', 'Dodano pomyślnie gre');
         } catch (Exception $e) {
             $message = $e->getMessage();
@@ -72,7 +74,8 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        return view('backend.games.edit', ['game' => $game]);
+        $categories = GamesCategory::orderBy('name')->get();
+        return view('backend.games.edit', ['game' => $game, 'categories' => $categories]);
     }
 
     /**
@@ -86,9 +89,14 @@ class GameController extends Controller
     {
         try {
             $game->update(array_merge($request->all(), ['slug' => Str::slug($request->name)]));
-            return redirect()->route('App::categories.index')->withMessage('success',
-                'Pomyślnie edytowano kategorie ' . $game->name);
+            if ($request->file('poster', null) != null) {
+                $game->clearMediaCollection('poster');
+                $game->addMediaFromRequest('poster')->toMediaCollection('poster');
+            }
+            return redirect()->route('App::games.index')->withMessage('success',
+                'Pomyślnie edytowano gre ' . $game->name);
         } catch (Exception $e) {
+            dd($e);
             $message = $e->getMessage();
             if ($e->getPrevious()) {
                 $message = $e->getPrevious()->getMessage();

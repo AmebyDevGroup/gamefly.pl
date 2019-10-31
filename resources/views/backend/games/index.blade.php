@@ -16,16 +16,40 @@
                     <div class="card mb-3 text-white bg-dark">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div>
-                                <img src="https://via.placeholder.com/150">
+                                @if($game->getFirstMedia('poster'))
+                                    <img src="{{$game->getFirstMedia('poster')->getUrl('thumb')}}">
+                                @else
+                                    <img src="https://via.placeholder.com/150">
+                                @endif
                             </div>
-                            <div class="px-3 flex-grow-1">
-                                <h5 class="card-title">{{$game->name}}</h5>
-                                <p class="card-text">{{$game->description}}</p>
+                            <div class="px-3 d-flex flex-grow-1 flex-column justify-content-between"
+                                 style="height: 150px">
+                                <h6 class="card-title-category flex-grow-0">{{$game->category->name}}</h6>
+                                <h5 class="card-title flex-grow-0">{{$game->name}}</h5>
+                                <h6 class="flex-grow-0">
+                                    @if($game->active)
+                                        <span class="badge badge-success">Aktywny</span>
+                                    @endif
+                                    @if($game->sale)
+                                        <span class="badge badge-danger">Wyprzedaż</span>
+                                    @endif
+                                    @if($game->preorder)
+                                        <span class="badge badge-primary">Przedsprzedaż</span>
+                                    @endif
+                                </h6>
+                                <h6 class="card-title-category flex-grow-0">Edytowano: {{$game->updated_at}}</h6>
+                                <p class="card-text flex-grow-1">
+                                    @if(strlen($game->description)>450)
+                                        {{substr($game->description,0,450)}}...
+                                    @else
+                                        {{$game->description}}
+                                    @endif
+                                </p>
                             </div>
                             <div class="pl-3 flex-column">
-                                <button type="button" class="btn-action btn btn-secondary btn-sm my-1 d-block disabled">
-                                    <i class="fas fa-eye"></i>
-                                </button>
+                                {{--                                <button type="button" class="btn-action btn btn-secondary btn-sm my-1 d-block disabled">--}}
+                                {{--                                    <i class="fas fa-eye"></i>--}}
+                                {{--                                </button>--}}
                                 <button type="button" class="btn-action btn btn-info btn-sm my-1 d-block">
                                     <a href="{{route('App::games.edit', [$game])}}"><i class="far fa-edit"></i></a>
                                 </button>
