@@ -12,4 +12,5 @@ npm-debug.log
 yarn-error.log
 composer.lock
 /storage/medialibrary/
+/storage/medialibrary/*
 /public/media/
