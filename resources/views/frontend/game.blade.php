@@ -6,12 +6,13 @@
         <div class="game-page"style="background-image:url({{$game->getFirstMedia('poster')->getUrl('')}})"></div>
         <div class="item-page">
             <div>
+                <p class="description">
                 @if($game->getFirstMedia('poster'))
                     <img class="game-poster" src="{{$game->getFirstMedia('poster')->getUrl('')}}">
                 @else
                     <img src="https://via.placeholder.com/356x474">
                 @endif
-                <p class="description">{{$game->description}}</p>
+                {{$game->fulltext}}</p>
             </div>
          </div>
     @endforeach
