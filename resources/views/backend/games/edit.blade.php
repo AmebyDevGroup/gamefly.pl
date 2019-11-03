@@ -93,14 +93,14 @@
                         <div class="form-group">
                             <label for="introtext">Krótki opis</label>
                             <textarea class="form-control" id="introtext" name="introtext"
-                                      rows="3">{{ old('introtext') }}</textarea>
+                                      rows="3">{{ old('introtext', $game->introtext) }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="fulltext">Opis</label>
                             <textarea class="form-control" id="fulltext" name="fulltext"
-                                      rows="3">{{ old('fulltext') }}</textarea>
+                                      rows="3">{{ old('fulltext', $game->fulltext) }}</textarea>
                         </div>
                     </div>
                 </div>
