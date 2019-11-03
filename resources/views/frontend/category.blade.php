@@ -6,7 +6,6 @@
         @if($category->games->count())
             <div class="col-xs-12">
                 @foreach($category->games as $game)
-                @endforeach
                     <div class="col-md-3 col-sm-6 col-xs-6">
                         <!-- Service item -->
                         <div class="service-item animated">
@@ -16,11 +15,23 @@
                                 <img src="https://via.placeholder.com/150x200">
                         @endif
                             <!-- Service item heading -->
-                            <h4><a href="{{$game->getUrl()}}">{{$game->name}}</a></h4>
-                            <p>{{$game->description}}</p>
+                            <div>
+                                <h4><a href="{{$game->getUrl()}}">{{$game->name}}</a></h4>
+                                <p>
+                                    @if($game->introtext)
+                                        {{$game->introtext}}
+                                    @else
+                                        @if(strlen($game->fulltext)>150)
+                                            {{substr($game->fulltext,0,150)}}...
+                                        @else
+                                            {{$game->fulltext}}
+                                        @endif
+                                    @endif
+                                </p>
+                            </div>
                         </div>
                     </div>
-
+                @endforeach
             </div>
         @else
             <div class="col-xs-12">
