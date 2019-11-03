@@ -75,7 +75,12 @@
                                 <div class="wrapper">
                                     <label class="label" for="poster">Dodaj okładkę</label>
                                     <div class="input">
-                                        <input name="poster" id="poster" class="file" type="file">
+                                        <input name="poster" id="poster" class="file" type="file"
+                                               @if($game->getFirstMedia('poster'))
+                                               data-image="{{$game->getFirstMedia('poster')->getUrl('info')}}"
+                                               data-image_name="{{$game->getFirstMedia('poster')->name}}"
+                                            @endif
+                                        >
                                     </div>
                                 </div>
                             </div>
