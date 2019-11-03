@@ -2,7 +2,6 @@
 
 @section('content')
     <h3 class='strikearound'>{{$game->name}}</h3>
-    @foreach($category->games as $game)
         <div class="game-page"style="background-image:url({{$game->getFirstMedia('poster')->getUrl('')}})"></div>
         <div class="item-page">
             <div>
@@ -15,5 +14,4 @@
                 {{$game->fulltext}}</p>
             </div>
          </div>
-    @endforeach
 @endsection
