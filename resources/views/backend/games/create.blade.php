@@ -7,7 +7,7 @@
             <h5 class="card-title d-flex align-items-center">Nowa gra</h5>
         </div>
         <div class="card-body">
-            <form action="{{route('App::games.store')}}" method="post">
+            <form action="{{route('App::games.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="row">

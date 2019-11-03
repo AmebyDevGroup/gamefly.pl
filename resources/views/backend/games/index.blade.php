@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @message
     <div class="card text-white bg-dark mb-3">
         <div class="card-header d-flex justify-content-between">
             <h5 class="card-title d-flex align-items-center">Lista gier</h5>
@@ -17,7 +18,7 @@
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div>
                                 @if($game->getFirstMedia('poster'))
-                                    <img src="{{$game->getFirstMedia('poster')->getUrl('thumb')}}">
+                                    <img src="{{$game->getFirstMedia('poster')->getUrl('info-bg')}}">
                                 @else
                                     <img src="https://via.placeholder.com/150x200">
                                 @endif
@@ -39,10 +40,14 @@
                                 </h6>
                                 <h6 class="card-title-category flex-grow-0">Edytowano: {{$game->updated_at}}</h6>
                                 <p class="card-text flex-grow-1">
-                                    @if(strlen($game->description)>450)
-                                        {{substr($game->description,0,450)}}...
+                                    @if($game->introtext)
+                                        {{$game->introtext}}
                                     @else
-                                        {{$game->description}}
+                                        @if(strlen($game->fulltext)>450)
+                                            {{substr($game->fulltext,0,450)}}...
+                                        @else
+                                            {{$game->fulltext}}
+                                        @endif
                                     @endif
                                 </p>
                             </div>

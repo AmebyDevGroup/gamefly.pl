@@ -44,7 +44,11 @@ class GameController extends Controller
     public function store(Request $request)
     {
         try {
-            Game::create(array_merge($request->all(), ['slug' => Str::slug($request->name), 'ordering' => 0]));
+            $game = Game::create(array_merge($request->all(), ['slug' => Str::slug($request->name), 'ordering' => 0]));
+            if ($request->file('poster', null) != null) {
+                $game->clearMediaCollection('poster');
+                $game->addMediaFromRequest('poster')->toMediaCollection('poster');
+            }
             return redirect()->route('App::games.index')->withMessage('success', 'Dodano pomyślnie gre');
         } catch (Exception $e) {
             $message = $e->getMessage();
@@ -96,7 +100,6 @@ class GameController extends Controller
             return redirect()->route('App::games.index')->withMessage('success',
                 'Pomyślnie edytowano gre ' . $game->name);
         } catch (Exception $e) {
-            dd($e);
             $message = $e->getMessage();
             if ($e->getPrevious()) {
                 $message = $e->getPrevious()->getMessage();
@@ -113,6 +116,8 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
+        $game->slug = time() . '_' . $game->slug;
+        $game->save();
         $game->delete();
         return redirect()->back()->withMessage('success', 'Element usunięty');
     }
