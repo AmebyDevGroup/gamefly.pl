@@ -19,7 +19,7 @@
                                 @if($game->getFirstMedia('poster'))
                                     <img src="{{$game->getFirstMedia('poster')->getUrl('thumb')}}">
                                 @else
-                                    <img src="https://via.placeholder.com/150">
+                                    <img src="https://via.placeholder.com/150x200">
                                 @endif
                             </div>
                             <div class="px-3 d-flex flex-grow-1 flex-column justify-content-between"

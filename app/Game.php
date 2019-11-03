@@ -44,7 +44,7 @@ class Game extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->fit(Manipulations::FIT_FILL, 150, 150);
+            ->fit(Manipulations::FIT_FILL, 150, 200);
     }
 
     public function category()

@@ -2,20 +2,17 @@
 
 @section('content')
     <h3 class='strikearound'>{{$game->name}}</h3>
-    <div class="row">
-
-    </div>
-
-
-    <h4 class='strikearound'>Pozostałe gry z kategorii {{$category->name}}</h4>
     @foreach($category->games as $game)
-        <div class="col-md-3 col-sm-6 col-xs-6">
-            <!-- Service item -->
-            <div class="service-item animated">
-                <i class="icon-camera skyblue"></i>
-                <!-- Service item heading -->
-                <h4><a href="{{$game->getUrl()}}">{{$game->name}}</a></h4>
+        <div class="game-page"style="background-image:url({{$game->getFirstMedia('poster')->getUrl('')}})"></div>
+        <div class="item-page">
+            <div>
+                @if($game->getFirstMedia('poster'))
+                    <img class="game-poster" src="{{$game->getFirstMedia('poster')->getUrl('')}}">
+                @else
+                    <img src="https://via.placeholder.com/356x474">
+                @endif
+                <p class="description">{{$game->description}}</p>
             </div>
-        </div>
+         </div>
     @endforeach
 @endsection

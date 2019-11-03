@@ -6,29 +6,20 @@
         @if($category->games->count())
             <div class="col-xs-12">
                 @foreach($category->games as $game)
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <!-- Service item -->
-                        <div class="service-item animated">
-                            <img src="https://via.placeholder.com/150">
-                            <!-- Service item heading -->
-                            <h4><a href="{{$game->getUrl()}}">{{$game->name}}</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia mollit anim id
-                                ests.</p>
-                        </div>
-                    </div>
                 @endforeach
-                @for($i = 0; $i < 20; $i++)
                     <div class="col-md-3 col-sm-6 col-xs-6">
                         <!-- Service item -->
                         <div class="service-item animated">
-                            <img src="https://via.placeholder.com/150">
+                            @if($game->getFirstMedia('poster'))
+                                <img src="{{$game->getFirstMedia('poster')->getUrl('thumb')}}">
+                            @else
+                                <img src="https://via.placeholder.com/150x200">
+                        @endif
                             <!-- Service item heading -->
                             <h4><a href="{{$game->getUrl()}}">{{$game->name}}</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia mollit anim id
-                                ests.</p>
+                            <p>{{$game->description}}</p>
                         </div>
                     </div>
-                @endfor
 
             </div>
         @else
