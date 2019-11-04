@@ -83,7 +83,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="introtext">Krótki opis</label>
-                            <textarea class="form-control editor" id="introtext" name="introtext"
+                            <textarea class="form-control" id="introtext" name="introtext"
                                       rows="3">{{ old('introtext') }}</textarea>
                         </div>
                     </div>
