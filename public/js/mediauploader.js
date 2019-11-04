@@ -14,7 +14,6 @@ $(function () {
                 btn = $('#' + inputName + '_upload');
                 $(this).find('.wrapper').prepend('<img src="" class="hidden" alt="Przesłany plik" id="' + inputName + '_uploadImg" width="100%">');
                 img = $('#' + inputName + '_uploadImg');
-                console.log(currentImage);
                 if (currentImage != null) {
                     img.attr('src', currentImage);
                     img.removeClass('hidden');

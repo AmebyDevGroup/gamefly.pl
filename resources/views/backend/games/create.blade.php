@@ -27,7 +27,17 @@
                             <input type="text" class="form-control" id="price" name="price" aria-describedby="price"
                                    placeholder="Cena" value="{{ old('price') }}">
                         </div>
-
+                        <div class="form-group">
+                            <label for="category">Kategoria</label>
+                            <select class="form-control" name="category_id" id="category_id">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}"
+                                            @if(old('category_id') == $category->id) selected @endif >
+                                        {{$category->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="form-check">
                             <input type="hidden" value="0" name="active">
@@ -66,17 +76,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="category">Kategoria</label>
-                            <select class="form-control" name="category_id" id="category_id">
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}"
-                                            @if(old('category_id') == $category->id) selected @endif >
-                                        {{$category->name}}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                     <div class="col-sm-12">
                         <hr>
@@ -84,14 +83,14 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="introtext">Krótki opis</label>
-                            <textarea class="form-control" id="introtext" name="introtext"
+                            <textarea class="form-control editor" id="introtext" name="introtext"
                                       rows="3">{{ old('introtext') }}</textarea>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="fulltext">Opis</label>
-                            <textarea class="form-control" id="fulltext" name="fulltext"
+                            <textarea class="form-control editor" id="fulltext" name="fulltext"
                                       rows="3">{{ old('fulltext') }}</textarea>
                         </div>
                     </div>
