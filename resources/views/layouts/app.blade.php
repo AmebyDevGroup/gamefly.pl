@@ -9,12 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
-    <script src="{{ asset('js/mediauploader.js') }}"></script>
-    <script src="{{asset('js/backend.js')}}"></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -22,6 +16,7 @@
     <!-- Styles -->
     <script src="https://kit.fontawesome.com/b91db4d51d.js" crossorigin="anonymous"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tagsinput.css') }}" rel="stylesheet">
     <link href="{{ asset('css/backend.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -89,5 +84,12 @@
     <footer>
         GameFly © 2019 Copyright. #KW#JW
     </footer>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    <script src="{{ asset('js/mediauploader.js') }}"></script>
+    <script src="{{ asset('js/tagsinput.js') }}"></script>
+    <script src="{{asset('js/backend.js')}}"></script>
 </body>
 </html>

@@ -3,14 +3,16 @@
 @section('content')
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
     <h3 class='strikearound'>{{$game->name}}</h3>
+    @if($game->getFirstMedia('poster'))
         <div class="game-page"style="background-image:url({{$game->getFirstMedia('poster')->getUrl('')}})"></div>
+    @endif
         <div class="item-page">
             <div>
                 <div class="description">
                 @if($game->getFirstMedia('poster'))
                     <img class="game-poster" src="{{$game->getFirstMedia('poster')->getUrl('')}}">
                 @else
-                    <img src="https://via.placeholder.com/356x474">
+                        <img class="game-poster" src="https://via.placeholder.com/356x474">
                 @endif
                     <div class="mainbox">
                         <h2>Ocena</h2>
@@ -28,7 +30,9 @@
                         </fieldset>
                         <br/>   <br/>
                         <button class="wypozycz">WYPOŻYCZ</button>
-                        <img class="pegi" src="https://pegi.info/sites/default/files/styles/medium/public/2017-03/2000px-PEGI_3.svg_.png?itok=v29cXS0R"/>
+                        @if($game->pegi)
+                            <img class="pegi" src="{{$game->pegi->getFirstMedia('image')->getUrl()}}"/>
+                        @endif
                     </div>
                     <div class="text"><hr>{!!$game->fulltext!!}</div>
                 </div>

@@ -40,7 +40,16 @@
 
                     <div class="col-md-3 col-xs-12">
                         <div class="form-group">
-                            <label for="category">Opcje</label>
+                            <div class="form-group">
+                                <label for="pegi_id">PEGI</label>
+                                <select class="form-control" name="pegi_id" id="pegi_id">
+                                    @foreach($pegi as $pegi_item)
+                                        <option value="{{$pegi_item->id}}"
+                                                @if(old('pegi_id', $game->pegi_id) == $pegi_item->id) selected @endif >{{$pegi_item->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <label for="category">Status</label>
                             <div class="form-check">
                                 <input type="hidden" value="0" name="active">
                                 <input class="form-check-input" type="checkbox" value="1" name="active" id="active"
@@ -84,6 +93,12 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="introtext">Tagi</label>
+                            <select multiple data-role="tagsinput"></select>
                         </div>
                     </div>
                     <div class="col-sm-12">

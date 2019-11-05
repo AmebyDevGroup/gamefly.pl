@@ -19,6 +19,7 @@ class Game extends Model implements HasMedia
      */
     protected $fillable = [
         'category_id',
+        'pegi_id',
         'ordering',
         'code',
         'name',
@@ -58,6 +59,11 @@ class Game extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(GamesCategory::class);
+    }
+
+    public function pegi()
+    {
+        return $this->belongsTo(Pegi::class);
     }
 
     public function getUrl()

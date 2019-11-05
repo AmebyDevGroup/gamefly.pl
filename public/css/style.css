@@ -257,17 +257,6 @@ h3.strikearound:after{
     margin-top: 10px;
 }
 
-
-@media (max-width: 480px){
-    .carousel-caption{
-        padding-bottom: 20px !important;
-    }
-
-    .carousel-caption  img{
-        display: none !important;
-    }
-}
-
 #settings > a {
     z-index: 1;
     box-shadow: 0px 10px 15px 5px #333;
@@ -581,6 +570,137 @@ input
     makeCross2 var(--animationSpeed) ease var(--animationSpeed) 1 forwards;
 }
 
+.game-poster{
+    width: 356px;
+    height:474px;
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+.description{
+    overflow:hidden;
+    font-size: 18px;
+    color:whitesmoke;
+    padding:10px;
+}
+.description hr{
+    border: 1px solid #ba1b12;
+}
+.description h3{
+    color: #ba1b12;
+}
+.test{
+    overflow:hidden;
+    font-size: 18px;
+    color:white;
+    padding:10px;
+}
+.game-page{
+    position: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    -webkit-filter: blur(20px);
+    -moz-filter: blur(20px);
+    -o-filter: blur(20px);
+    -ms-filter: blur(20px);
+    filter: blur(20px);
+    width: calc(100% - 257px);
+    height:100%;
+}
+.item-page {
+    background-color: rgba(34, 34, 34, 0.8);
+    position: relative;
+    padding: 15px;
+    margin: 50px 20px 0;
+}
+.text{
+    padding-top: 40px;
+}
+.wypozycz {
+    font-family: 'Quantum';
+    background-color: #ba1b12;
+    border: 0;
+    outline: 0;
+    color: white;
+    padding: 1.5rem 2rem;
+    font-size: 18px;
+    box-shadow: 0px 5px 10px #222;
+    transition: all 0.3s;
+    cursor: pointer;
+    border-radius: 3px;
+    border-bottom: 4px solid #84130d;
+
+}
+.wypozycz:hover {
+    box-shadow: 0px 15px 25px -5px #000000;
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+}
+.wypozycz:active {
+    box-shadow: 0px 4px 8px #222;
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+}
+
+.rating {
+    border: none;
+    float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.rating > label {
+    color: #ddd;
+    float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+.pegi
+{
+    margin-top:-70px;
+    float: right;
+    width: 90px;
+    margin-right: 80px;
+}
+
+.no-games {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 180px);
+    align-items: center;
+    font-family: 'Quantum', sans-serif;
+    font-size: 48px;
+}
+
+.no-games span {
+    font-size: 102px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
 
 /* RESPONSIVE */
 
@@ -588,6 +708,10 @@ input
     .sidebar {
         transition: transform .3s ease;
         transform: translateX(-240px);
+    }
+
+    .game-page {
+        width: calc(100% - 17px);
     }
 
     .sidebar.show {
@@ -609,6 +733,24 @@ input
     footer {
         width: 100%;
         left: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-caption {
+        padding-bottom: 20px !important;
+    }
+
+    .carousel-caption img {
+        display: none !important;
+    }
+
+    .no-games {
+        font-size: 32px;
+    }
+
+    .no-games span {
+        font-size: 72px;
     }
 }
 
@@ -721,123 +863,4 @@ input
         transform: translateY(0);
         opacity: 1;
     }
-}
-.game-poster{
-    width: 356px;
-    height:474px;
-    float: left;
-    padding-right: 20px;
-    padding-bottom: 10px;
-}
-.description{
-    overflow:hidden;
-    font-size: 18px;
-    color:whitesmoke;
-    padding:10px;
-}
-.description hr{
-    border: 1px solid #ba1b12;
-}
-.description h3{
-    color: #ba1b12;
-}
-.test{
-    overflow:hidden;
-    font-size: 18px;
-    color:white;
-    padding:10px;
-}
-.item-page{
-    margin-top: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.game-page{
-    position: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
-    -webkit-filter: blur(20px);
-    -moz-filter: blur(20px);
-    -o-filter: blur(20px);
-    -ms-filter: blur(20px);
-    filter: blur(20px);
-    width:100%;
-    height:100%;
-}
-.item-page {
-    background-color: rgba(34, 34, 34, 0.8);
-    position: absolute;
-    padding: 15px;
-}
-.text{
-  padding-top: 40px;
-}
-.wypozycz {
-    font-family: 'Quantum';
-    background-color: #ba1b12;
-    border: 0;
-    outline: 0;
-    color: white;
-    padding: 1.5rem 2rem;
-    font-size: 18px;
-    box-shadow: 0px 5px 10px #222;
-    transition: all 0.3s;
-    cursor: pointer;
-    border-radius: 3px;
-    border-bottom: 4px solid #84130d;
-
-}
-.wypozycz:hover {
-    box-shadow: 0px 15px 25px -5px #000000;
-    -webkit-transform: scale(1.03);
-    transform: scale(1.03);
-}
-.wypozycz:active {
-    box-shadow: 0px 4px 8px #222;
-    -webkit-transform: scale(0.98);
-    transform: scale(0.98);
-}
-
-.rating {
-    border: none;
-    float: left;
-}
-
-.rating > input { display: none; }
-.rating > label:before {
-    margin: 5px;
-    font-size: 1.25em;
-    font-family: FontAwesome;
-    display: inline-block;
-    content: "\f005";
-}
-
-.rating > .half:before {
-    content: "\f089";
-    position: absolute;
-}
-
-.rating > label {
-    color: #ddd;
-    float: right;
-}
-
-/***** CSS Magic to Highlight Stars on Hover *****/
-
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
-
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
-
-.pegi
-{
-    margin-top:-70px;
-    float: right;
-    width: 90px;
-    margin-right: 80px;
 }

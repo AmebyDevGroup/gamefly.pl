@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Game;
 use App\GamesCategory;
 use App\Http\Controllers\Controller;
+use App\Pegi;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -32,7 +33,8 @@ class GameController extends Controller
     public function create()
     {
         $categories = GamesCategory::orderBy('name')->get();
-        return view('backend.games.create', ['categories' => $categories]);
+        $pegi = Pegi::all();
+        return view('backend.games.create', ['categories' => $categories, 'pegi' => $pegi]);
     }
 
     /**
@@ -79,7 +81,8 @@ class GameController extends Controller
     public function edit(Game $game)
     {
         $categories = GamesCategory::orderBy('name')->get();
-        return view('backend.games.edit', ['game' => $game, 'categories' => $categories]);
+        $pegi = Pegi::all();
+        return view('backend.games.edit', ['game' => $game, 'categories' => $categories, 'pegi' => $pegi]);
     }
 
     /**

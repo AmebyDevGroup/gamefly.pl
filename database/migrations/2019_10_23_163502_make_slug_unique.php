@@ -31,13 +31,13 @@ class MakeSlugUnique extends Migration
      */
     public function down()
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::table('games', function (Blueprint $table) {
             $table->string('slug')->dropUnique();
         });
-        Schema::create('games_categories', function (Blueprint $table) {
+        Schema::table('games_categories', function (Blueprint $table) {
             $table->string('slug')->dropUnique();
         });
-        Schema::create('games_tags', function (Blueprint $table) {
+        Schema::table('games_tags', function (Blueprint $table) {
             $table->string('slug')->dropUnique();
         });
     }

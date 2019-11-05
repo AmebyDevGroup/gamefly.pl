@@ -34,8 +34,11 @@
                 @endforeach
             </div>
         @else
-            <div class="col-xs-12">
-                Nie znaleziono gier w tej kategorii...
+            <div class="col-xs-12 no-games">
+                {{--                <span>(⌣́_⌣̀)</span>--}}
+                <span>༼ つ ಥ_ಥ ༽つ</span>
+                {{--                <span>(ノಠ益ಠ)ノ彡┻━┻</span>--}}
+                Nie mamy tego czego szukasz
             </div>
         @endif
     </div>
