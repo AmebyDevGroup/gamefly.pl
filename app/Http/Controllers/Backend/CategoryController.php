@@ -106,7 +106,15 @@ class CategoryController extends Controller
      */
     public function destroy(GamesCategory $category)
     {
-        $category->delete();
+        try {
+            $category->delete();
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            if ($e->getPrevious()) {
+                $message = $e->getPrevious()->getMessage();
+            }
+            return redirect()->back()->withMessage('danger', $message);
+        }
         return redirect()->back()->withMessage('success', 'Element usunięty');
     }
 }
