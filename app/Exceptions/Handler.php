@@ -49,6 +49,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+//        ToDO::Na froncie bierze sesje z backendu
         if ($exception instanceof ModelNotFoundException
             || $exception->getCode() == 404
             || (method_exists($exception, 'getStatusCode') && $exception->getStatusCode() == 404)) {

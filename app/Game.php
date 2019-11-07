@@ -21,8 +21,6 @@ class Game extends Model implements HasMedia
     protected $fillable = [
         'category_id',
         'pegi_id',
-        'ordering',
-        'code',
         'name',
         'slug',
         'introtext',

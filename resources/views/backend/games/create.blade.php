@@ -17,11 +17,11 @@
                             <input type="text" class="form-control" id="name" name="name" aria-describedby="name"
                                    placeholder="Nazwa" value="{{ old('name') }}">
                         </div>
-                        <div class="form-group">
-                            <label for="code">Identyfikator</label>
-                            <input type="text" class="form-control" id="code" name="code" aria-describedby="code"
-                                   placeholder="Identyfikator" value="{{ old('code') }}">
-                        </div>
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <label for="code">Identyfikator</label>--}}
+                        {{--                            <input type="text" class="form-control" id="code" name="code" aria-describedby="code"--}}
+                        {{--                                   placeholder="Identyfikator" value="{{ old('code') }}">--}}
+                        {{--                        </div>--}}
                         <div class="form-group">
                             <label for="price">Cena</label>
                             <input type="text" class="form-control" id="price" name="price" aria-describedby="price"
