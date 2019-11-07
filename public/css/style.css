@@ -931,3 +931,12 @@ input
         opacity: 1;
     }
 }
+#chartdiv {
+    width: 100%;
+    height: 350px;
+}
+path.d
+{
+display: none;
+}
+
