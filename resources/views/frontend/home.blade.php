@@ -7,7 +7,6 @@
                 <div class="carousel-inner">
                     <div class="item active">
                     </div>
-
                     <!-- TOP -->
                     <div class="service">
                         <h3 class='strikearound'>TOP</h3>
@@ -84,14 +83,21 @@
                 @endforeach
             </div>
             <h3 class='strikearound'>TAGS</h3>
-            <div class="row">
+            <div id="chartdiv">
                 @php
                     use App\GamesTag;$tags = GamesTag::all();
                 @endphp
-                @foreach($tags as $tag)
-                    <a href="#">{{$tag->name}}</a>
-                @endforeach
             </div>
-        </div>
+            </div>
     </div>
 @endsection
+<script>
+    var data=[{
+            @foreach($tags  as $tag)
+            "tag": "{{$tag->name}}",
+            "count": "1234"
+        },{
+    @endforeach
+        }]
+</script>
+
