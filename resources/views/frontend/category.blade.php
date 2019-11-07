@@ -21,8 +21,8 @@
                                     @if($game->introtext)
                                         {{$game->introtext}}
                                     @else
-                                        @if(strlen($game->fulltext)>150)
-                                            {{substr($game->fulltext,0,150)}}...
+                                        @if(strlen(strip_tags($game->fulltext))>150)
+                                            {{substr(strip_tags($game->fulltext),0,150)}}...
                                         @else
                                             {{$game->fulltext}}
                                         @endif
