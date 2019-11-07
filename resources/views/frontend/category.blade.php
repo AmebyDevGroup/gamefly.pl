@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="service">
-        <h3 class='strikearound'>{{$category->name}}</h3>
+        @if(is_a($category, \App\GamesTag::class))
+            <h3 class='strikearound'>Gry z tagiem: {{$category->name}}</h3>
+        @else
+            <h3 class='strikearound'>{{$category->name}}</h3>
+        @endif
         @if($category->games->count())
             <div class="col-xs-12">
                 @foreach($category->games as $game)

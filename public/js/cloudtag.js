@@ -11,6 +11,7 @@ series.data = data;
 
 series.dataFields.word = "tag";
 series.dataFields.value = "count";
+series.dataFields.slug = "slug";
 
 series.heatRules.push({
     "target": series.labels.template,
@@ -20,7 +21,7 @@ series.heatRules.push({
     "dataField": "value"
 });
 
-series.labels.template.url = "http://gamefly.localhost/{word}";
-series.labels.template.urlTarget = "_blank";
+series.labels.template.url = "http://gamefly.localhost/tag/{slug}";
+series.labels.template.urlTarget = "_self";
 
-series.labels.template.tooltipText = "{word}:\n[bold]{value}[/]";
+series.labels.template.tooltipText = "Liczba gier:\n[bold]{value}[/]";

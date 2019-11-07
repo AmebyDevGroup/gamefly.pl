@@ -96,6 +96,7 @@
             @foreach($tags  as $tag)
         {
             "tag": "{{$tag->name}}",
+            "slug": "{{\Illuminate\Support\Str::slug($tag->name)}}",
             "count": "{{$tag->weight}}"
         },
         @endforeach

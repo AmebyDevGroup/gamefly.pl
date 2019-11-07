@@ -17,8 +17,13 @@ class GamesTag extends Model
         'description',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function games()
     {
-        $this->belongsToMany(Game::class, 'game_tag', 'tag_id', 'game_id');
+        return $this->belongsToMany(Game::class, 'game_tag', 'tag_id', 'game_id');
     }
 }

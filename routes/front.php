@@ -16,5 +16,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', function () {
     return view('frontend.home');
 });
+Route::get('/szukaj/{search}', 'FrontController@getGamesBySearch')->name('search');
+Route::get('/tag/{tag}', 'FrontController@getGamesWithTag')->name('tag');
 Route::get('{category}', 'FrontController@getCategory')->name('category');
 Route::get('{category}/{game}', 'FrontController@getGame')->name('game');
