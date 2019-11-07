@@ -67,7 +67,7 @@ class Game extends Model implements HasMedia
 
     public function tags()
     {
-        return $this->belongsToMany(GamesTag::class, 'game_tag', 'tag_id', 'game_id');
+        return $this->belongsToMany(GamesTag::class, 'game_tag', 'game_id', 'tag_id');
     }
 
     public function addTags($tags = [])

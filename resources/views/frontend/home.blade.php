@@ -85,19 +85,20 @@
             <h3 class='strikearound'>TAGS</h3>
             <div id="chartdiv">
                 @php
-                    use App\GamesTag;$tags = GamesTag::all();
+                    use App\TagsCount;$tags = TagsCount::all();
                 @endphp
             </div>
             </div>
     </div>
 @endsection
 <script>
-    var data=[{
+    var data = [
             @foreach($tags  as $tag)
+        {
             "tag": "{{$tag->name}}",
-            "count": "1234"
-        },{
-    @endforeach
-        }]
+            "count": "{{$tag->weight}}"
+        },
+        @endforeach
+    ]
 </script>
 
