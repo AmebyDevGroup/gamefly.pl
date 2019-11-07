@@ -667,15 +667,15 @@ input
     float: right;
 }
 
-/***** CSS Magic to Highlight Stars on Hover *****/
+/***** GWIAZDKI *****/
 
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
 
-.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked + label:hover,
 .rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > label:hover ~ input:checked ~ label,
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
 .pegi
@@ -702,6 +702,73 @@ input
     margin-bottom: 25px;
 }
 
+
+
+/***** TAG MENU ****/
+.tagcloud ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.tagcloud ul li {
+    display: inline-block;
+    margin: 0 0 .3em 1em;
+    padding: 0;
+}
+.tagcloud ul li a {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 1em;
+    background-color: #ba1b12;
+    border-radius: 0 3px 3px 0;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.tagcloud ul li a::before {
+    position: absolute;
+    top: 0;
+    left: -15px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-color: transparent #ba1b12 transparent transparent;
+    border-style: solid;
+    border-width: 15px 15px 15px 0;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.tagcloud ul li a::after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 6px;
+    height: 6px;
+    margin-top: -3px;
+    background-color: #fff;
+    border-radius: 100%;
+}
+.tagcloud ul li span {
+    display: block;
+    max-width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.tagcloud ul li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+.tagcloud ul li a:hover::before {
+    border-right-color: #333;
+}
 /* RESPONSIVE */
 
 @media only screen and (max-width: 991px) {

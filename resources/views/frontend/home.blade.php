@@ -84,14 +84,17 @@
                 @endforeach
             </div>
             <h3 class='strikearound'>TAGS</h3>
-            <div class="row">
-                @php
-                    use App\GamesTag;$tags = GamesTag::all();
-                @endphp
-                @foreach($tags as $tag)
-                    <a href="#">{{$tag->name}}</a>
-                @endforeach
+                <div class="tagcloud">
+                    <ul>
+                        @php
+                            use App\GamesTag;$tags = GamesTag::all();
+                        @endphp
+                        @foreach($tags  as $tag)
+                            <li> <a href="#">{{$tag->name}}</a> </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
-        </div>
     </div>
 @endsection
+
