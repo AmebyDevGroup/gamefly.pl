@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -64,6 +65,34 @@ class Game extends Model implements HasMedia
     public function pegi()
     {
         return $this->belongsTo(Pegi::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(GamesTag::class, 'game_tag', 'tag_id', 'game_id');
+    }
+
+    public function addTags($tags = [])
+    {
+        $tags_slug = [];
+        $this->tags()->sync([]);
+        if (!is_array($tags)) {
+            $tags = explode(',', $tags);
+        }
+        foreach ($tags as $value) {
+            $tags_slug[$value] = Str::slug($value);
+        }
+        $current_tags = GamesTag::whereIn('slug', $tags_slug)->pluck('slug')->toArray();
+        $missing_tags = array_diff($tags_slug, $current_tags);
+        foreach ($missing_tags as $m_tag_name => $m_tag_slug) {
+            GamesTag::create([
+                'name' => $m_tag_name,
+                'slug' => $m_tag_slug,
+                'description' => ''
+            ]);
+        }
+        $all_tags = GamesTag::whereIn('slug', $tags_slug)->pluck('id');
+        $this->tags()->sync($all_tags);
     }
 
     public function getUrl()

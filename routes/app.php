@@ -18,4 +18,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('categories', 'CategoryController');
     Route::resource('games', 'GameController');
+    Route::get('/autocomplete-tags', 'GameController@getTags')->name('autocomplete-tags');
 });

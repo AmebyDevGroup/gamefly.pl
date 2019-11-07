@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Game;
 use App\GamesCategory;
+use App\GamesTag;
 use App\Http\Controllers\Controller;
 use App\Pegi;
 use Exception;
@@ -100,6 +101,7 @@ class GameController extends Controller
                 $game->clearMediaCollection('poster');
                 $game->addMediaFromRequest('poster')->toMediaCollection('poster');
             }
+            $game->addTags($request->tags);
             return redirect()->route('App::games.index')->withMessage('success',
                 'Pomyślnie edytowano gre ' . $game->name);
         } catch (Exception $e) {
@@ -123,5 +125,12 @@ class GameController extends Controller
         $game->save();
         $game->delete();
         return redirect()->back()->withMessage('success', 'Element usunięty');
+    }
+
+
+    public function getTags(Request $request)
+    {
+        $tags = GamesTag::where('slug', 'like', '%' . Str::slug($request->search) . '%')->get()->pluck('name');
+        return response()->json($tags);
     }
 }

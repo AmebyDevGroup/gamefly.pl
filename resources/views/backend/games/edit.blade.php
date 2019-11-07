@@ -98,7 +98,10 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="introtext">Tagi</label>
-                            <select multiple data-role="tagsinput"></select>
+                            {{--                            <select multiple data-role="tagsinput" name="tags[]"></select>--}}
+                            <input data-role="tagsinput" id="tags" name="tags"
+                                   data-autocomplete="{{route('App::autocomplete-tags')}}"
+                                   value="{{$game->tags->implode('name', ',')}}">
                         </div>
                     </div>
                     <div class="col-sm-12">

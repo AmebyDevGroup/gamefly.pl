@@ -17,6 +17,9 @@
     <script src="https://kit.fontawesome.com/b91db4d51d.js" crossorigin="anonymous"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tagsinput.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/backend.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -90,6 +93,7 @@
     <script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
     <script src="{{ asset('js/mediauploader.js') }}"></script>
     <script src="{{ asset('js/tagsinput.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{asset('js/backend.js')}}"></script>
 </body>
 </html>
