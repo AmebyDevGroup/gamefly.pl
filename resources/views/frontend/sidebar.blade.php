@@ -14,7 +14,7 @@
 </div>
 <!--szukajka-->
 <div class="sidebar-search">
-    <form action="{{route('Front::search')}}">
+    <form class="search" action="{{route('Front::search')}}">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Szukaj gry" name="s">
             <span class="input-group-btn">
