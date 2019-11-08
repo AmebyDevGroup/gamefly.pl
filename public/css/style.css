@@ -769,6 +769,17 @@ input
 .tagcloud ul li a:hover::before {
     border-right-color: #333;
 }
+
+.error_404 {
+    position: relative;
+    top: 20px;
+    width: calc(100% - 50px);
+    height: calc(100vh - 200px);
+    border: 0px;
+    margin: auto;
+    display: block;
+    box-shadow: 0 0 20px 10px #333;
+}
 /* RESPONSIVE */
 
 @media only screen and (max-width: 991px) {

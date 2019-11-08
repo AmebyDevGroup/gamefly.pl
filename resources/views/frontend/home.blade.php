@@ -52,7 +52,7 @@
             <h3 class='strikearound'>NEWS</h3>
             <div class="row">
                 @php
-                    use App\Game;$news = Game::where('active',1)->orderBy('created_at')->limit(4)->get();
+                    $news = App\Game::with('media','category')->where('active',1)->orderBy('created_at')->limit(4)->get();
                 @endphp
                 @foreach($news as $game)
                     <div class="col-md-3 col-sm-6 col-xs-6">
@@ -85,7 +85,7 @@
             <h3 class='strikearound'>TAGS</h3>
             <div id="chartdiv">
                 @php
-                    use App\TagsCount;$tags = TagsCount::all();
+                    $tags = App\TagsCount::all();
                 @endphp
             </div>
             </div>

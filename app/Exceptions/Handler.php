@@ -2,7 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\FrontUser;
+use App\Http\Middleware\FrontAuthenticate;
+use Config;
 use Exception;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
@@ -49,12 +53,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-//        ToDO::Na froncie bierze sesje z backendu
-        if ($exception instanceof ModelNotFoundException
-            || $exception->getCode() == 404
-            || (method_exists($exception, 'getStatusCode') && $exception->getStatusCode() == 404)) {
-            return response()->view('frontend.errors.' . '404', [], 416);
+        if (!(strpos('/' . trim(request()->path(), '/') . '/',
+            '/' . trim('wp-admin', '/') . '/') !== false ? true : false)) {
+            $app = app();
+            Config::set('auth.providers.front_users', ["driver" => "eloquent", "model" => FrontUser::class]);
+            Config::set('auth.guards.front', ["driver" => "session", "provider" => "front_users"]);
+            Config::set('auth.passwords.front_users',
+                ["provider" => "front_users", "table" => "front_password_resets", "expire" => 10080]);
+            Config::set('auth.defaults.passwords', 'front_users');
+            auth()->setDefaultDriver('front');
+            $app['router']->aliasMiddleware('auth', FrontAuthenticate::class);
+            $app['router']->aliasMiddleware('verified', EnsureEmailIsVerified::class);
+            if ($exception instanceof ModelNotFoundException
+                || $exception->getCode() == 404
+                || (method_exists($exception, 'getStatusCode') && $exception->getStatusCode() == 404)) {
+                return response()->view('frontend.errors.' . '404', [], 416);
+            }
         }
+
         return parent::render($request, $exception);
     }
 }
