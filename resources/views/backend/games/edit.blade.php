@@ -10,7 +10,7 @@
             <form action="{{route('App::games.update', [$game])}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <ul class="nav nav-tabs form-tabs" id="form-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="info-tab" data-toggle="tab" href="#info" role="tab"
                            aria-controls="info" aria-selected="true">Informacje</a>
@@ -30,11 +30,6 @@
                                            aria-describedby="name"
                                            placeholder="Nazwa" value="{{ old('name', $game->name) }}">
                                 </div>
-                                {{--                                <div class="form-group">--}}
-                                {{--                                    <label for="code">Identyfikator</label>--}}
-                                {{--                                    <input type="text" class="form-control" id="code" name="code" aria-describedby="code"--}}
-                                {{--                                           placeholder="Identyfikator" value="{{ old('code', $game->code) }}">--}}
-                                {{--                                </div>--}}
                                 <div class="form-group">
                                     <label for="price">Cena</label>
                                     <input type="text" class="form-control" id="price" name="price"
@@ -140,15 +135,63 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="items" role="tabpanel" aria-labelledby="items-tab">
-                        <div class="row">
-                            <div class="col-sm-12">
-
+                        <div class="row items">
+                            <div class="col-sm-12 big-screen-labels">
+                                <div class="single_item">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" value="Numer seryjny" readonly disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" value="Uwagi" readonly disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success add-item"><i
+                                                class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="col-sm-12 single_item_box default_item_box">
+                                <div class="single_item">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="items[x][code]"
+                                               placeholder="Numer seryjny">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="items[x][comments]"
+                                               placeholder="Uwagi">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-danger remove-item"><i
+                                                class="fas fa-minus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @foreach($game->items as $key => $item)
+                                <div class="col-sm-12 single_item_box">
+                                    <div class="single_item">
+                                        <div class="form-group">
+                                            <input type="hidden" name="items[{{$key}}][id]" value="{{$item->id}}">
+                                            <input class="form-control" type="text" name="items[{{$key}}][code]"
+                                                   placeholder="Numer seryjny" value="{{$item->code}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" name="items[{{$key}}][comments]"
+                                                   placeholder="Uwagi" value="{{$item->comments}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-danger remove-item"><i
+                                                    class="fas fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
-
-                <button type="submit" class="btn btn-primary">Zapisz</button>
+                <div class="form-buttons-bottom">
+                    <button type="submit" class="btn btn-primary">Zapisz</button>
+                </div>
             </form>
         </div>
     </div>

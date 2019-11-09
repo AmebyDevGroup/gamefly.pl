@@ -2,7 +2,7 @@ am4core.useTheme(am4themes_animated);
 
 
 var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
-chart.fontFamily = "Courier New";
+chart.fontFamily = "Quantum";
 var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
 series.randomness = 0.1;
 series.rotationThreshold = 0.5;

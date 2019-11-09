@@ -55,6 +55,11 @@ class Game extends Model implements HasMedia
             ->fit(Manipulations::FIT_STRETCH, 356, 474);
     }
 
+    public function items()
+    {
+        return $this->hasMany(GamesItem::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(GamesCategory::class);
@@ -91,6 +96,29 @@ class Game extends Model implements HasMedia
         }
         $all_tags = GamesTag::whereIn('slug', $tags_slug)->pluck('id');
         $this->tags()->sync($all_tags);
+    }
+
+    public function addItems($items = [])
+    {
+        if ($items['x'] ?? false) {
+            unset($items['x']);
+        }
+        $this->items()->whereNotIn('id', collect($items)->pluck('id'))->delete();
+        $this->load('items');
+        foreach ($items as $item) {
+            if ($item['id'] ?? false) {
+                $this->items->where('id', $item['id'])->first()->update([
+                    'code' => $item['code'],
+                    'comments' => $item['comments'] ?? ''
+                ]);
+            } else {
+                $this->items()->create([
+                    'code' => $item['code'],
+                    'comments' => $item['comments'] ?? '',
+                    'loaned' => 0,
+                ]);
+            }
+        }
     }
 
     public function getUrl()

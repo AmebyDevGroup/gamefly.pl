@@ -55,9 +55,11 @@
                                 {{--                                <button type="button" class="btn-action btn btn-secondary btn-sm my-1 d-block disabled">--}}
                                 {{--                                    <i class="fas fa-eye"></i>--}}
                                 {{--                                </button>--}}
-                                <button type="button" class="btn-action btn btn-info btn-sm my-1 d-block">
-                                    <a href="{{route('App::games.edit', [$game])}}"><i class="far fa-edit"></i></a>
-                                </button>
+                                <a href="{{route('App::games.edit', [$game])}}">
+                                    <button type="button" class="btn-action btn btn-info btn-sm my-1 d-block">
+                                        <i class="far fa-edit"></i>
+                                    </button>
+                                </a>
                                 <button type="button" class="btn-action btn btn-danger btn-sm my-1 d-block"
                                         onclick="event.preventDefault();
                                             document.getElementById('deleteForm{{$game->id}}}}').submit();">

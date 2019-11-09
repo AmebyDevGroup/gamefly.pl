@@ -52,6 +52,8 @@ class GameController extends Controller
                 $game->clearMediaCollection('poster');
                 $game->addMediaFromRequest('poster')->toMediaCollection('poster');
             }
+            $game->addTags($request->tags);
+            $game->addItems($request->items);
             return redirect()->route('App::games.index')->withMessage('success', 'Dodano pomyślnie gre');
         } catch (Exception $e) {
             $message = $e->getMessage();
@@ -96,12 +98,13 @@ class GameController extends Controller
     public function update(Request $request, Game $game)
     {
         try {
-            $game->update(array_merge($request->all(), ['slug' => Str::slug($request->name)]));
+            $game->update(array_merge($request->except('tags', 'items'), ['slug' => Str::slug($request->name)]));
             if ($request->file('poster', null) != null) {
                 $game->clearMediaCollection('poster');
                 $game->addMediaFromRequest('poster')->toMediaCollection('poster');
             }
             $game->addTags($request->tags);
+            $game->addItems($request->items);
             return redirect()->route('App::games.index')->withMessage('success',
                 'Pomyślnie edytowano gre ' . $game->name);
         } catch (Exception $e) {

@@ -77,3 +77,82 @@ footer {
     background-color: #ba1b12;
     border-color: #9a9da0;
 }
+
+.form-tabs {
+    margin-bottom: 15px;
+    border-color: #4e555b
+}
+
+.form-tabs .nav-link {
+    background-color: #4e555b;
+    color: #fff;
+}
+
+.form-buttons-bottom {
+    border-top: 1px solid #4e555b;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.items {
+    margin-top: 15px;
+}
+
+.single_item_box.default_item_box {
+    display: none;
+}
+
+.single_item_box label {
+    display: none;
+}
+
+.single_item {
+    border-top: 1px solid #4e555b;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.big-screen-labels .single_item {
+    padding: 0;
+    border: 0;
+}
+
+.big-screen-labels .single_item .form-control[readonly] {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    padding-left: 0;
+    margin-right: .75rem;
+}
+
+.single_item .form-group {
+    margin-bottom: 0;
+}
+
+.single_item .form-group:nth-child(1) {
+    flex-grow: 1;
+    padding-right: 15px;
+}
+
+.single_item .form-group:nth-child(2) {
+    flex-grow: 3;
+    padding-right: 15px;
+}
+
+.single_item .form-group:nth-child(3) {
+    flex-grow: 0;
+    align-self: flex-end;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .single_item_box label {
+        display: inline-block;
+    }
+
+    .big-screen-labels label {
+        display: none;
+    }
+}
