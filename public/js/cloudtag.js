@@ -1,6 +1,5 @@
 am4core.useTheme(am4themes_animated);
 
-
 var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
 chart.fontFamily = "Quantum";
 var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
@@ -23,5 +22,4 @@ series.heatRules.push({
 
 series.labels.template.url = "http://gamefly.localhost/tag/{slug}";
 series.labels.template.urlTarget = "_self";
-
 series.labels.template.tooltipText = "Liczba gier:\n[bold]{value}[/]";
