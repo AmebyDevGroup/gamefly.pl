@@ -7,6 +7,7 @@ use App\Game;
 use App\GamesCategory;
 use App\GamesTag;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use PDOException;
@@ -46,5 +47,30 @@ class FrontController extends Controller
     {
         $tag->load('games.category', 'games.media');
         return view('frontend.category', ['category' => $tag]);
+    }
+
+    public function setRate(Request $request, GamesCategory $category, Game $game)
+    {
+        $user = auth()->user();
+        if ($user) {
+            if ($game->rates()->where('front_user_id', $user->id)->count() > 0) {
+                return response()->json(['success' => false, 'message' => 'Dodałeś już ocenę dla tej gry!']);
+            }
+            try {
+                $game->rates()->create([
+                    'front_user_id' => $user->id,
+                    'rate' => $request->value
+                ]);
+                return response()->json(['success' => true, 'message' => 'Pomyślnie dodano Twoją ocenę']);
+            } catch (Exception $e) {
+                $message = $e->getMessage();
+                if ($e->getPrevious()) {
+                    $message = $e->getPrevious()->getMessage();
+                }
+                return response()->json(['success' => false, 'message' => $message]);
+            }
+        } else {
+            return response()->json(['success' => false, 'message' => 'Tylko zalogowani mogą oceniać gry!']);
+        }
     }
 }
