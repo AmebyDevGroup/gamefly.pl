@@ -77,11 +77,6 @@
                         @endif
                     </div>
                     <div class="text"><hr>{!!$game->fulltext!!}</div>
-
-
-                    <br/><br/>
-                    AAAAAAAAAAAAAAAA TEST AAAAAAAAAAAAAAAAAA
-                    <br/><br/>
                 </div>
             </div>
          </div>
