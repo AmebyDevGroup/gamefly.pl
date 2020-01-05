@@ -8,6 +8,8 @@ use App\Game;
 use App\GamesCategory;
 use App\GamesTag;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\EnsureEmailIsVerified;
+use App\Http\Middleware\FrontAuthenticate;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -18,6 +20,22 @@ use PDOException;
 
 class FrontController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(FrontAuthenticate::class)->only('userProfile', 'reservateView', 'reservate');
+        $this->middleware(EnsureEmailIsVerified::class)->only('reservateView', 'reservate');
+    }
+
+    public function userProfile()
+    {
+        return view('frontend.profile');
+    }
+
     public function getCategory(GamesCategory $category)
     {
         $category->load('games.category', 'games.media');
@@ -83,7 +101,7 @@ class FrontController extends Controller
             if ($game->items()->where('loaned', 0)->count() > 0) {
                 $user = auth()->user();
                 if ($user) {
-                    if (!in_array($game->id, $user->games->pluck('game_id')->toArray())) {
+                    if (!in_array($game->id, $user->games()->where('expired', 0)->pluck('game_id')->toArray())) {
                         return view('frontend.reservate', ['category' => $category, 'game' => $game]);
                     }
                     return redirect()->route('Front::game', [$category, $game])->withMessage('danger',
@@ -99,7 +117,7 @@ class FrontController extends Controller
     {
         $authUser = auth()->user();
         if ($authUser->id == $user->id) {
-            if (!in_array($game->id, $user->games->pluck('game_id')->toArray())) {
+            if (!in_array($game->id, $user->games()->where('expired', 0)->pluck('game_id')->toArray())) {
                 DB::beginTransaction();
                 try {
                     $copy = $game->items()->where('loaned', 0)->lockForUpdate()->first();
@@ -115,7 +133,8 @@ class FrontController extends Controller
                     DB::rollBack();
                     throw $e;
                 }
-                dd('success');
+                return redirect()->route('Front::profile')->withMessage('success',
+                    "Dodano grę do biblioteki!");
             }
             return redirect()->route('Front::game', [$category, $game])->withMessage('danger',
                 "Masz już tą grę w swojej bibliotece!");

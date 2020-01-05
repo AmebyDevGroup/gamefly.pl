@@ -65,6 +65,6 @@ class FrontUser extends Authenticatable implements MustVerifyEmail
 
     public function games()
     {
-        return $this->belongsToMany(GamesItem::class)->withTimestamps();
+        return $this->belongsToMany(GamesItem::class)->withPivot(['price', 'expired', 'expired_at'])->withTimestamps();
     }
 }

@@ -27,7 +27,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fontawesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}?{{date('ymdhis')}}" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
