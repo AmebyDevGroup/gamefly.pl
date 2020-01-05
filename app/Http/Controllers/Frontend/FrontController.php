@@ -3,12 +3,15 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\FrontUser;
 use App\Game;
 use App\GamesCategory;
 use App\GamesTag;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use PDOException;
 
@@ -73,4 +76,51 @@ class FrontController extends Controller
             return response()->json(['success' => false, 'message' => 'Tylko zalogowani mogą oceniać gry!']);
         }
     }
+
+    public function reservateView(Request $request, GamesCategory $category, Game $game)
+    {
+        if ($request->game_id == $game->id) {
+            if ($game->items()->where('loaned', 0)->count() > 0) {
+                $user = auth()->user();
+                if ($user) {
+                    if (!in_array($game->id, $user->games->pluck('game_id')->toArray())) {
+                        return view('frontend.reservate', ['category' => $category, 'game' => $game]);
+                    }
+                    return redirect()->route('Front::game', [$category, $game])->withMessage('danger',
+                        "Masz już tą grę w swojej bibliotece!");
+                }
+                abort(401);
+            }
+        }
+        abort(403);
+    }
+
+    public function reservate(Request $request, GamesCategory $category, Game $game, FrontUser $user)
+    {
+        $authUser = auth()->user();
+        if ($authUser->id == $user->id) {
+            if (!in_array($game->id, $user->games->pluck('game_id')->toArray())) {
+                DB::beginTransaction();
+                try {
+                    $copy = $game->items()->where('loaned', 0)->lockForUpdate()->first();
+                    $copy->loaned = 1;
+                    $copy->save();
+                    $user->games()->attach($copy, [
+                        'key' => $copy->serial(),
+                        'price' => $game->price,
+                        'expired_at' => Carbon::now()->addMonth(),
+                    ]);
+                    DB::commit();
+                } catch (Exception $e) {
+                    DB::rollBack();
+                    throw $e;
+                }
+                dd('success');
+            }
+            return redirect()->route('Front::game', [$category, $game])->withMessage('danger',
+                "Masz już tą grę w swojej bibliotece!");
+        }
+        abort(401);
+    }
+
 }
