@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Http\Middleware\InitFrontend;
+use Carbon\Carbon;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Router $router, Kernel $kernel)
     {
+        DB::statement('call check_rented(?)', [Carbon::now()->format('Y-m-d H:i:s')]);
         $router->middlewareGroup('front', $kernel->getMiddlewareGroups()['web']);
         $router->pushMiddlewareToGroup('front', InitFrontend::class);
         RedirectResponse::macro('withMessage', function ($type, $message, $status = 200, $data = false) {

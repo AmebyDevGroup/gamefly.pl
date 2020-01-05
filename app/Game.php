@@ -85,6 +85,14 @@ class Game extends Model implements HasMedia
         return $this->hasOne(RateAvg::class);
     }
 
+    public function userRate()
+    {
+        if (auth()->user()) {
+            return $this->rates()->where('front_user_id', auth()->user()->id)->first();
+        }
+        return null;
+    }
+
     public function addTags($tags = [])
     {
         $tags_slug = [];

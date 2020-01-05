@@ -62,4 +62,9 @@ class FrontUser extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new ResetFrontPassword($token));
     }
+
+    public function games()
+    {
+        return $this->belongsToMany(GamesItem::class)->withTimestamps();
+    }
 }

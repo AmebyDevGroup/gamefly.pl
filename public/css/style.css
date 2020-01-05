@@ -585,6 +585,7 @@ input
     font-size: 18px;
     color:whitesmoke;
     padding:10px;
+    position: relative;
 }
 .description hr{
     border: 1px solid #ba1b12;
@@ -621,6 +622,7 @@ input
     padding-top: 40px;
 }
 .wypozycz {
+    margin-top: 5px;
     font-family: 'Quantum';
     background-color: #ba1b12;
     border: 0;
@@ -633,14 +635,20 @@ input
     cursor: pointer;
     border-radius: 3px;
     border-bottom: 4px solid #84130d;
-
 }
-.wypozycz:hover {
+
+.wypozycz.disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
+
+.wypozycz:not(.disabled):hover {
     box-shadow: 0px 15px 25px -5px #000000;
     -webkit-transform: scale(1.03);
     transform: scale(1.03);
 }
-.wypozycz:active {
+
+.wypozycz:not(.disabled):active {
     box-shadow: 0px 4px 8px #222;
     -webkit-transform: scale(0.98);
     transform: scale(0.98);
@@ -648,7 +656,7 @@ input
 
 .rating {
     border: none;
-    float: left;
+    width: 155px;
 }
 
 .rating > input { display: none; }
@@ -681,12 +689,30 @@ input
 .rating > label:hover ~ input:checked ~ label,
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
+
+.my-rate h4 {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.my-rate .rating {
+    display: inline-block;
+    transform: scale(.7);
+    vertical-align: bottom;
+    margin-left: -20px;
+}
+
+.my-rate .rating {
+    pointer-events: none;
+}
+
 .pegi
 {
-    margin-top:-70px;
-    float: right;
     width: 90px;
-    margin-right: 80px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 10px;
 }
 
 .no-games {

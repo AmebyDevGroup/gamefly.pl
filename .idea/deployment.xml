@@ -9,6 +9,25 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="E24.WERWA">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/gamefly.pl" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/gamefly.pl/vendor" />
+            <excludedPath path="/gamefly.pl/storage" />
+            <excludedPath path="/gamefly.pl/public/media" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="newme.sungroup.pl">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

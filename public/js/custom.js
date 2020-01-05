@@ -1,4 +1,4 @@
-$(document).on('click', '.rating input', function () {
+$(document).on('click', '.rate-form input', function () {
     let form = $(this).closest('form');
     let action = form.attr('action');
     let csrf = $("meta[name='csrf-token']").attr('content');
@@ -40,18 +40,6 @@ $(document).on('click', '.rating input', function () {
                         `${error}`
                     )
                 })
-            // return fetch(action)
-            //     .then(response => {
-            //         if (!response.ok) {
-            //             throw new Error(response.statusText)
-            //         }
-            //         return response.json()
-            //     })
-            //     .catch(error => {
-            //         Swal.showValidationMessage(
-            //             `${error}`
-            //         )
-            //     })
         },
         allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
