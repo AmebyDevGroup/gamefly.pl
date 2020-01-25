@@ -1029,7 +1029,6 @@ input
     font-size: 20px;
     font-family: 'Open Sans', sans-serif;
 }
-
 .check {
     cursor: pointer;
     position: relative;
@@ -1039,7 +1038,6 @@ input
     -webkit-tap-highlight-color: transparent;
     transform: translate3d(0, 0, 0);
 }
-
 .check:before {
     content: "";
     position: absolute;
@@ -1052,7 +1050,6 @@ input
     opacity: 0;
     transition: opacity 0.2s ease;
 }
-
 .check svg {
     position: relative;
     z-index: 1;
@@ -1064,34 +1061,27 @@ input
     transform: translate3d(0, 0, 0);
     transition: all 0.2s ease;
 }
-
 .check svg path {
     stroke-dasharray: 60;
     stroke-dashoffset: 0;
 }
-
 .check svg polyline {
     stroke-dasharray: 22;
     stroke-dashoffset: 66;
 }
-
 .check:hover:before {
     opacity: 1;
 }
-
 .check:hover svg {
     stroke: #ba1b12;
 }
-
 #cbx:checked + .check svg {
     stroke: #ba1b12;
 }
-
 #cbx:checked + .check svg path {
     stroke-dashoffset: 60;
     transition: all 0.3s linear;
 }
-
 #cbx:checked + .check svg polyline {
     stroke-dashoffset: 42;
     transition: all 0.2s linear;
@@ -1110,5 +1100,10 @@ input
 
 .username {
     font-family: 'Quantum';
+    color: #ba1b12;
+    font-size: 3em;
+}
+
+.klucz {
     color: #ba1b12;
 }

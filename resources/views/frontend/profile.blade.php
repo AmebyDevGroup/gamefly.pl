@@ -25,7 +25,7 @@
                     <div>
                         <h4><a href="{{$game->game->getUrl()}}">{{$game->game->name}}</a></h4>
                         <p>
-                            Twój Klucz:<br/><b>{{$game->pivot->key}}</b><br/>
+                            Twój Klucz:<br/><b><span class="klucz">{{$game->pivot->key}}</span></b><br/>
                             Dostępna do: {{$game->pivot->expired_at}}<br/>
                         </p>
                     </div>
