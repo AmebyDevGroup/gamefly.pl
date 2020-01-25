@@ -67,13 +67,13 @@
 <script src="{{ asset('js/waypoints.min.js') }}"></script>
 <script src="{{ asset('js/respond.min.js') }}"></script>
 <script src="{{ asset('js/html5shiv.js') }}"></script>
-<script src="{{ asset('js/custom.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}?2"></script>
 <!---CloudTag-->
 <script src="https://www.amcharts.com/lib/4/core.js"></script>
 <script src="https://www.amcharts.com/lib/4/charts.js"></script>
 <script src="https://www.amcharts.com/lib/4/plugins/wordCloud.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-<script src="{{ asset('js/cloudtag.js') }}"></script>
+<script src="{{ asset('js/cloudtag.js') }}?2"></script>
 @yield('scripts')
 </body>
 </html>

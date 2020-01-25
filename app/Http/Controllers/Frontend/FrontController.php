@@ -33,7 +33,7 @@ class FrontController extends Controller
 
     public function userProfile()
     {
-        return view('frontend.profile');
+        return view('frontend.profile', ['user' => auth()->user()]);
     }
 
     public function getCategory(GamesCategory $category)

@@ -22,7 +22,7 @@ $(document).ready(function () {
             "dataField": "value"
         });
 
-        series.labels.template.url = "http://gamefly.localhost/tag/{slug}";
+        series.labels.template.url = "https://gamefly.pl/tag/{slug}";
         series.labels.template.urlTarget = "_self";
         series.labels.template.tooltipText = "Liczba gier:\n[bold]{value}[/]";
     }
