@@ -126,7 +126,7 @@ class FrontController extends Controller
                     $user->games()->attach($copy, [
                         'key' => $copy->serial(),
                         'price' => $game->price,
-                        'expired_at' => Carbon::now()->addMonth(),
+                        'expired_at' => Carbon::parse($request->expired_at . " 16:00:00"),
                     ]);
                     DB::commit();
                 } catch (Exception $e) {
